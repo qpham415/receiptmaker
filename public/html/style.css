@@ -1,0 +1,212 @@
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+body {
+  background-color: white; 
+}
+#pagewrap {
+  margin: 0 auto 30px auto;
+  width: 820px;
+}
+#workorder {
+  text-align: right;
+  font-size: 60px;
+  color: #b7b7b7;
+  margin-top: 50px;
+}
+#logo { 
+  text-align: left; 
+  float: left;
+  margin-left: 20px;
+  width: 600px; 
+}
+#logoclick, #changeform {
+  text-align: left;
+  float: left;
+  margin-left: 20px;
+  width: 600px;
+  height: 100px;
+  display: none;
+}
+.logobutton {
+  border: 1px solid black;
+  padding: 5px;
+  margin-left: 3px;
+  float: left;
+}
+#imageinput {
+  margin: 8px 0 0 3px;
+}
+#imageinstr {
+  margin: 10px 0 0 3px;
+  font-style: italic;
+  font-weight: bold;
+}
+#meta { 
+  width: 170px; 
+  float: right; 
+}
+#meta td.meta-head { 
+  text-align: right;
+  color: #984806;
+  width: 60px; 
+}
+#meta td input {
+  width: 100%;   
+  text-align: right;
+  border: 0px;
+  padding: 2px; 
+}
+#meta td input:hover {
+  background: #ecf170;
+}
+#line {
+  margin: 15px 0 0 20px;
+  background-color:#984806;
+  height: 1.5px;
+  width: 800px;
+}
+#label-left {
+  margin-left: 20px;
+}
+.companyinfo {
+  float: left;
+  margin-top: 30px;
+  text-align: left;
+}
+.companyinfo:hover {
+  background: #ecf170;
+}
+.label {
+  float: left;
+  padding-top: 30px;
+  margin-right: 5px;
+  color: #984806;
+}
+#data {
+  margin-top: 30px;
+}
+#data th {
+  background-color: #984705;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid #ffffff;
+  border-top: 1px solid #984705;
+  text-align: center;
+}
+#data th#cancelh {
+  background: #ffffff;
+  border: 0;
+  width: 20px;
+  padding: 0;
+}
+#data th#qty {
+  width: 60px;
+  border-left: 1px solid #984705;
+}
+#data #description {
+  width: 400px;
+}
+#data th#price {
+  width: 160px;
+}
+#data th#total {
+  width: 160px;
+  border-right: 1px solid #984705;
+}
+#data td {
+  border-right: 1px solid #984806;
+  border-left: 1px solid #984806;
+  border-style: none solid;
+}
+#data input {
+  background: transparent;
+  border: 0px;
+  width: 100%;
+  text-align: center;
+}
+#data tr.even td {
+  background-color: #fde9d8;
+}
+#data tr td.cancelcell {
+  width: 20px;
+  border: 0;
+  background: #ffffff;
+}
+#data td:hover, #data tr.even td:hover {
+  background: #ecf170;
+}
+.cancel {
+  background: url('images/cancel.png') no-repeat;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+}
+.wrapper {
+  padding: 5px;
+}
+#data td#add {
+  padding: 5px;
+  text-align: left;
+  border: 1px solid #984705;
+}
+#data td#add:hover, #data tr.even td.cancelcell {
+  background: #ffffff;
+}
+#fakerow {
+  display:none;
+}
+#data td#subtotal, #data td#taxes, #data td#finaltotal {
+  color: #7e7e7e;
+  text-align: right;
+  background: #ffffff;
+  border-left: 0;
+  padding-right: 10px;
+}
+.wrapperbottom {
+  padding: 5px;
+  border-bottom: 1px solid #984705;
+}
+#payable {
+  padding-top: 30px;
+  text-align: center;
+}
+#payable input {
+  border: 0;
+}
+#payable input:hover {
+  background: #ecf170;
+}
+#thankyou {
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+  font-style: italic;
+  font-family:"Verdana", Verdana, Sans-serif;
+}
+#data td.nocancel, #data tr.even td.nocancel {
+  width: 20px;
+  border: 0;
+  background: white;
+}
+table {
+  border-collapse: collapse;
+}
+textarea  {
+  border:0 none;
+  overflow: hidden;
+}
+* {
+  margin:0;
+  padding:0;
+}
+.clear {
+  clear: both;
+}
