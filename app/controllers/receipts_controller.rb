@@ -12,6 +12,7 @@ class ReceiptsController < ApplicationController
   end
 
   def new
+    @receipt = Receipt.new
   end
 
   def create

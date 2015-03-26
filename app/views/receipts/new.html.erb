@@ -1,61 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <meta name="description" content="This is a fillable and printable work order / receipt. No download required. Automatic math calculation." />
-    <link rel="stylesheet" href="reset-fonts-grids.css" type="text/css" />
-    <link rel="stylesheet" href="style.css" type="text/css" />
-    <script type='text/javascript' src='jquery-1.4.2.js'></script>
-    <script type='text/javascript' src='script.js'></script>
-    <script type="text/javascript" src="ui/jquery.ui.core.js"></script>
-    <script type="text/javascript" src="ui/jquery.ui.datepicker.js"></script>
-    <link type="text/css" href="ui/ui-lightness/jquery.ui.all.css" rel="stylesheet" />
-    <link type="text/css" href="demos.css" rel="stylesheet" />
-    <script type="text/javascript">
-    $(function() {
-      $("#datepicker").datepicker();
-    });
-    </script>
-    <style>
-    @media print {
-      #addrow {
-        display: none;
-      }
-      #data th {
-        border: 1px solid #984705;
-      }
+<head>
+  <meta name="description" content="This is a fillable and printable work order / receipt. No download required. Automatic math calculation." />
+  <style>
+  @media print {
+    #addrow {
+      display: none;
     }
-    </style>
-    <title>Free Receipt Maker</title>
-    <!-- GOOGLE ANALYTICS -->
-    <script type="text/javascript">
-      window.google_analytics_uacct = "UA-807594-33";
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-807594-33']);
-      _gaq.push(['_trackPageview']);
+    #data th {
+      border: 1px solid #984705;
+    }
+  }
+  </style>
+  <title>Free Receipt Maker</title>
+  <!-- GOOGLE ANALYTICS -->
+  <script type="text/javascript">
+    window.google_analytics_uacct = "UA-807594-33";
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-807594-33']);
+    _gaq.push(['_trackPageview']);
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    <!-- GOOGLE ANALYTICS -->
-  </head>
-  <body>
-      <div id="thead" class="no-print" style='width: 728px;margin: auto; padding: 30px 0;'>
-        <script type="text/javascript"><!--
-google_ad_client = "pub-7736238313527981";
-/* invoicetemplatefree 728 */
-google_ad_slot = "9558536204";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>      </div>
-    <div id="pagewrap">
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <!-- GOOGLE ANALYTICS -->
+</head>
+<body>
+  <div id="thead" class="no-print" style='width: 728px;margin: auto; padding: 30px 0;'>
+    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+  </div>
+  <div id="pagewrap">
+    <%= form_for @receipt do |f| %>
       <div id="workorder" style="margin:0">Receipt</div>
       <div id="header">
         <div id="logo">
@@ -78,13 +54,11 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
           <tbody>
             <tr>
               <td class="meta-head">Date</td>
-              <td>
-                <input type="text" id="datepicker" value="[Enter a Date]" />
-              </td>
+              <td><%= f.text_field :date, :value => '[Enter a Date]' %></td>
             </tr>
             <tr>
               <td class="meta-head">W.O. #</td>
-              <td><input type="text" value="[100]" /></td>
+              <td><%= f.text_field :work_order_id, :value => '[100]' %></td>
             </tr>
           </tbody>
         </table>
@@ -94,23 +68,23 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
         <div id="address">
           <div class="label" id="label-left">FROM</div>
             <textarea class="companyinfo" rows="6" cols="34">
-[Your Company Name]
-[Street Address]
-[City, ST Zip Code]
-Phone [000-000-0000]
-Fax [000-000-0000]
-[e-mail]</textarea>
+  [Your Company Name]
+  [Street Address]
+  [City, ST Zip Code]
+  Phone [000-000-0000]
+  Fax [000-000-0000]
+  [e-mail]</textarea>
           <div class="label">TO</div>
             <textarea class="companyinfo" rows="6" cols="34">
-[Name]
-[Company Name]
-[Street Address]
-[City, ST Zip Code]
-Phone [000-000-0000]
-Customer ID [ABC123]</textarea>
+  [Name]
+  [Company Name]
+  [Street Address]
+  [City, ST Zip Code]
+  Phone [000-000-0000]
+  Customer ID [ABC123]</textarea>
           <div class="label">JOB</div>
             <textarea class="companyinfo" rows="6" cols="28">
-[Your Job Description]
+  [Your Job Description]
             </textarea>
         </div>
         <div class="clear"></div>
@@ -262,6 +236,6 @@ Customer ID [ABC123]</textarea>
         <input type="text" value="[Your Company Name]" />
       </div>
       <div id="thankyou">Thank you for your business!</div>
-    </div>
-  </body>
-</html>
+    <% end %>
+  </div>
+</body>
