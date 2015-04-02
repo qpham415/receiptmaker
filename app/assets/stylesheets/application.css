@@ -90,7 +90,6 @@
  }
  .companyinfo {
    float: left;
-   margin-top: 30px;
    text-align: left;
  }
  .companyinfo:hover {
@@ -98,7 +97,6 @@
  }
  .label {
    float: left;
-   padding-top: 30px;
    margin-right: 5px;
    color: #984806;
  }
@@ -157,7 +155,7 @@
    background: #ecf170;
  }
  .cancel {
-   background: url('images/cancel.png') no-repeat;
+   background: url('/assets/cancel.png') no-repeat;
    display: block;
    width: 16px;
    height: 16px;
@@ -194,6 +192,7 @@
  }
  #payable input {
    border: 0;
+   font-family: Courier;
  }
  #payable input:hover {
    background: #ecf170;
@@ -222,6 +221,19 @@
    margin:0;
    padding:0;
  }
+ #address {
+   padding-top: 30px;
+ }
+ .from_wrap {
+   display: inline-block;
+   width: 264px;
+   float: left;
+ }
+ .address_item {
+   float: left;
+ }
+
+
  .clear {
    clear: both;
  }

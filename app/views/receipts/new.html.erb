@@ -25,6 +25,12 @@
     })();
   </script>
   <!-- GOOGLE ANALYTICS -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $('#receipt_payable').keyup(function(){
+    alert("Testing!");
+  })
+  </script>
 </head>
 <body>
   <div id="thead" class="no-print" style='width: 728px;margin: auto; padding: 30px 0;'>
@@ -35,7 +41,7 @@
       <div id="workorder" style="margin:0">Receipt</div>
       <div id="header">
         <div id="logo">
-          <img id="image" src="images/logo.jpg" alt="logo" height=100px />
+          <img id="image" src="/assets/logo.jpg" alt="logo" height=100px />
         </div>
         <div id="logoclick">
           <div class="logobutton"><a id="changelogo" href="javascript:;">Change Logo</a></div>
@@ -46,7 +52,9 @@
           <div class="logobutton"><a id="changesave" href="javascript:;">Save Logo</a></div>
           <div class="logobutton"><a id="changecancel" href="javascript:;">Cancel</a></div>
           <div class="clear"></div>
-          <div id="imageinput"><input id="imageloc" type="text" value="" size="50"></div>
+          <div id="imageinput">
+            <%= f.text_field :image_link, :size => '50', :id => 'imageloc' %>
+          </div>
           <div class="clear"></div>
           <div id="imageinstr">Enter Logo URL</div>
         </div>
@@ -67,25 +75,25 @@
         <div id="line"></div>
         <div id="address">
           <div class="label" id="label-left">FROM</div>
-            <textarea class="companyinfo" rows="6" cols="34">
-  [Your Company Name]
-  [Street Address]
-  [City, ST Zip Code]
-  Phone [000-000-0000]
-  Fax [000-000-0000]
-  [e-mail]</textarea>
+          <%= f.text_area :from_address, :class => 'companyinfo', :rows => '6', :cols => '28', :value =>
+            '[Your Company Name]
+[Street Address]
+[City, ST Zip Code]
+Phone [000-000-0000]
+Fax [000-000-0000]
+[e-mail]'
+          %>
           <div class="label">TO</div>
-            <textarea class="companyinfo" rows="6" cols="34">
-  [Name]
-  [Company Name]
-  [Street Address]
-  [City, ST Zip Code]
-  Phone [000-000-0000]
-  Customer ID [ABC123]</textarea>
+          <%= f.text_area :to_address, :class => 'companyinfo', :rows => '6', :cols => '28', :value =>
+            '[Name]
+[Company Name]
+[Street Address]
+[City, ST Zip Code]
+Phone [000-000-0000]
+Customer ID [ABC123]'
+          %>
           <div class="label">JOB</div>
-            <textarea class="companyinfo" rows="6" cols="28">
-  [Your Job Description]
-            </textarea>
+          <%= f.text_area :job_description, :class => 'companyinfo', :rows => '6', :cols => '28', :value => '[Job Description]' %>
         </div>
         <div class="clear"></div>
       <table id="data">
@@ -208,7 +216,7 @@
             <td id="subtotal" colspan="3">Subtotal</td>
             <td>
               <div class="wrapperbottom">
-              <input type="text" id="subtotal-value"/>
+                <%= f.text_field :subtotal, :id => 'subotal-value' %>
               </div>
             </td>
           </tr>
@@ -217,7 +225,7 @@
             <td id="taxes" colspan="3">Sales Tax</td>
             <td>
               <div class="wrapperbottom">
-              <input type="text" id="tax-value"/>
+                <%= f.text_field :taxes, :id => 'tax-value' %>
               </div>
             </td>
           </tr>
@@ -226,14 +234,14 @@
             <td id="finaltotal" colspan="3">Total</td>
             <td>
               <div class="wrapperbottom">
-              <input type="text" id="total-value"/>
+                <%= f.text_field :total, :id => 'total-value' %>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
       <div id="payable">Make all checks payable to
-        <input type="text" value="[Your Company Name]" />
+        <%= f.text_field :payable, :value => '[Your Company Name]', :size => "22" %>
       </div>
       <div id="thankyou">Thank you for your business!</div>
     <% end %>
