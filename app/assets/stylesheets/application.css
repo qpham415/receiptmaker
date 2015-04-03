@@ -24,7 +24,7 @@
    background-color: white;
  }
  #pagewrap {
-   margin: 0 auto 30px auto;
+   margin: 50px auto 30px auto;
    width: 820px;
  }
  #workorder {
@@ -252,6 +252,18 @@
   display: inline-block;
   text-decoration: none;
   font-family: Lucida Grande, Arial
+}
+.textline_top {
+  float: right;
+  padding: 2px;
+}
+.address_box {
+  white-space: pre;
+  float: left;
+  width: 25%;
+}
+.wrapperbottom {
+  text-align: center;
 }
 
 
