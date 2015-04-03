@@ -124,24 +124,28 @@ $(document).ready(function(){
     cycle();
     update_subtotal();
   });
-  $('.cancel').live('click',function(){
+  $('.cancel').on('click',function(){
     $(this).parents('tr').remove();
     cycle();
     update_subtotal();
   });
-  $('#data .qty-value').live('change',function(e){
+  $('#data .qty-value').on('change',function(e){
     update_line(this);
   });
-  $('#data .price-value').live('change',function(e){
+  $('#data .price-value').on('change',function(e){
     $(this).val(to_currency($(this).val()));
     update_line(this);
   });
-  $('#data .linetotal').live('change',function(){
+  $('#data .linetotal').on('change',function(){
     update_subtotal();
   });
-  $('#data #tax-value').live('change',function(){
+  $('#data #tax-value').on('change',function(){
     $(this).val(to_currency($(this).val()));
     update_finaltotal();
+  });
+
+  $('#receipt_payable').on('keyup', function(){
+    this.size = this.value.length + this.value.length/8;
   });
 
 });

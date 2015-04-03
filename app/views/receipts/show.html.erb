@@ -14,7 +14,6 @@
 </head>
 <body>
   <div id="pagewrap">
-    <%= form_for @receipt do |f| %>
       <div id="workorder" style="margin:0">Receipt</div>
       <div id="header">
         <div id="logo">
@@ -30,7 +29,7 @@
           <div class="logobutton"><a id="changecancel" href="javascript:;">Cancel</a></div>
           <div class="clear"></div>
           <div id="imageinput">
-            <%= f.text_field :image_link, :size => '50', :id => 'imageloc' %>
+            <%= @receipt.image_link %>
           </div>
           <div class="clear"></div>
           <div id="imageinstr">Enter Logo URL</div>
@@ -39,11 +38,11 @@
           <tbody>
             <tr>
               <td class="meta-head">Date</td>
-              <td><%= f.text_field :date, :value => '[Enter a Date]' %></td>
+              <td><%= @receipt.date %></td>
             </tr>
             <tr>
               <td class="meta-head">W.O. #</td>
-              <td><%= f.text_field :work_order_id, :value => '[100]' %></td>
+              <td><%= @receipt.work_order_id %></td>
             </tr>
           </tbody>
         </table>
@@ -52,25 +51,11 @@
         <div id="line"></div>
         <div id="address">
           <div class="label" id="label-left">FROM</div>
-          <%= f.text_area :from_address, :class => 'companyinfo', :rows => '6', :cols => '28', :value =>
-            '[Your Company Name]
-[Street Address]
-[City, ST Zip Code]
-Phone [000-000-0000]
-Fax [000-000-0000]
-[e-mail]'
-          %>
+          <%= @receipt.from_address %>
           <div class="label">TO</div>
-          <%= f.text_area :to_address, :class => 'companyinfo', :rows => '6', :cols => '28', :value =>
-            '[Name]
-[Company Name]
-[Street Address]
-[City, ST Zip Code]
-Phone [000-000-0000]
-Customer ID [ABC123]'
-          %>
+          <%= @receipt.to_address %>
           <div class="label">JOB</div>
-          <%= f.text_area :job_description, :class => 'companyinfo', :rows => '6', :cols => '28', :value => '[Job Description]' %>
+          <%= @receipt.job_description %>
         </div>
         <div class="clear"></div>
       <table id="data">
@@ -193,7 +178,7 @@ Customer ID [ABC123]'
             <td id="subtotal" colspan="3">Subtotal</td>
             <td>
               <div class="wrapperbottom">
-                <%= f.text_field :subtotal, :id => 'subotal-value' %>
+                <%= @receipt.subtotal %>
               </div>
             </td>
           </tr>
@@ -202,7 +187,7 @@ Customer ID [ABC123]'
             <td id="taxes" colspan="3">Sales Tax</td>
             <td>
               <div class="wrapperbottom">
-                <%= f.text_field :taxes, :id => 'tax-value' %>
+                <%= @receipt.taxes %>
               </div>
             </td>
           </tr>
@@ -211,20 +196,18 @@ Customer ID [ABC123]'
             <td id="finaltotal" colspan="3">Total</td>
             <td>
               <div class="wrapperbottom">
-                <%= f.text_field :total, :id => 'total-value' %>
+                <%= @receipt.total %>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
       <div id="payable">Make all checks payable to
-        <%= f.text_field :payable, :value => '[Your Company Name]', :size => "22" %>
+        <%= @receipt.payable %>
       </div>
       <div id="thankyou">Thank you for your business!</div>
       <div class="receipt_actions">
-        <%= f.submit :class => "submit_button" %>
         <%= link_to 'Cancel', receipts_path, :class => "cancel_button" %>
       </div>
-    <% end %>
   </div>
 </body>

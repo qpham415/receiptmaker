@@ -192,7 +192,6 @@
  }
  #payable input {
    border: 0;
-   font-family: Courier;
  }
  #payable input:hover {
    background: #ecf170;
@@ -232,6 +231,28 @@
  .address_item {
    float: left;
  }
+ .receipt_actions {
+   margin: 50px 0;
+   float: right;
+ }
+.submit_button {
+  padding: 10px 20px;
+  border: 0;
+  background-color: #f7941d;
+  color: #fff;
+  font-size: 14px;
+  display:inline-block;
+}
+.cancel_button {
+  padding: 10px 20px;
+  border: 0;
+  background-color: #585858;
+  color: #fff;
+  font-size: 14px;
+  display: inline-block;
+  text-decoration: none;
+  font-family: Lucida Grande, Arial
+}
 
 
  .clear {
