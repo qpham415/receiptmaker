@@ -1,10 +1,10 @@
 class CreateLineItems < ActiveRecord::Migration
   def change
     create_table :line_items do |t|
-      t.integer :quantity
+      t.string :qty
       t.text :description
-      t.float :unit_price
-      t.float :line_total
+      t.string :unit_price
+      t.string :line_total
 
       t.references :receipt, index: true
 
