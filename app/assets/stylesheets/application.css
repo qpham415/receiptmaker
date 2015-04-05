@@ -163,6 +163,7 @@
  }
  .wrapper {
    padding: 5px;
+   border: 1px solid #000;
  }
  #data td#add {
    padding: 5px;

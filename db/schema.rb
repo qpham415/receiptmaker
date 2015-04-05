@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328224345) do
+ActiveRecord::Schema.define(version: 20150325051539) do
 
   create_table "line_items", force: :cascade do |t|
-    t.integer  "quantity"
+    t.string   "qty"
     t.text     "description"
-    t.float    "unit_price"
-    t.float    "line_total"
+    t.string   "unit_price"
+    t.string   "line_total"
     t.integer  "receipt_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -26,35 +26,18 @@ ActiveRecord::Schema.define(version: 20150328224345) do
   add_index "line_items", ["receipt_id"], name: "index_line_items_on_receipt_id"
 
   create_table "receipts", force: :cascade do |t|
-    t.datetime "date"
-    t.text     "work_order_id"
+    t.date     "date"
+    t.string   "work_order_id"
     t.text     "image_link"
-    t.text     "from_name"
-    t.text     "from_address1"
-    t.text     "from_address2"
-    t.text     "from_city"
-    t.text     "from_state"
-    t.text     "from_zip"
-    t.text     "from_phone"
-    t.text     "from_fax"
-    t.text     "from_email"
-    t.text     "to_name"
-    t.text     "to_company_name"
-    t.text     "to_address1"
-    t.text     "to_address2"
-    t.text     "to_city"
-    t.text     "to_state"
-    t.text     "to_zip"
-    t.text     "customer_id"
-    t.text     "job_description"
-    t.float    "subtotal"
-    t.float    "taxes"
-    t.float    "total"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
     t.text     "from_address"
     t.text     "to_address"
+    t.text     "job_description"
+    t.string   "subtotal"
+    t.string   "taxes"
+    t.string   "total"
     t.text     "payable"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

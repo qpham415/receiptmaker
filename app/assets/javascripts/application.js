@@ -80,18 +80,18 @@ function update_line (target) {
 }
 function update_subtotal () {
   var subtotal_value = 0;
-  $('#data .linetotal').map(function(){
+  $('#line_items .linetotal:visible').map(function(){
     var money = to_float($(this).val());
     if (!isNaN(money)) {
       subtotal_value += money;
     }
   });
-  $('#data #subtotal-value').val(to_currency(subtotal_value));
+  $('#totals #subtotal-value').val(to_currency(subtotal_value));
   update_finaltotal();
 }
 function update_finaltotal () {
-  var finaltotal = to_float($('#data #subtotal-value').val()) + to_float($('#data #tax-value').val());
-  $('#data #total-value').val(to_currency(finaltotal));
+  var finaltotal = to_float($('#totals #subtotal-value').val()) + to_float($('#totals #tax-value').val());
+  $('#totals #total-value').val(to_currency(finaltotal));
 }
 
 $(document).ready(function(){
@@ -119,27 +119,27 @@ $(document).ready(function(){
     $('#changeform').hide();
     $('#image').show();
   });
-  $('#addrow').click(function(){
-    $('#fakerow').before($('#fakerow').clone().attr('id','').show());
-    cycle();
-    update_subtotal();
-  });
-  $('.cancel').on('click',function(){
-    $(this).parents('tr').remove();
-    cycle();
-    update_subtotal();
-  });
-  $('#data .qty-value').on('change',function(e){
+//  $('#addrow').click(function(){
+//    $('#fakerow').before($('#fakerow').clone().attr('id','').show());
+//    cycle();
+//    update_subtotal();
+//  });
+//  $('.cancel').on('click',function(){
+//    $(this).parents('tr').remove();
+//    cycle();
+//    update_subtotal();
+//  });
+  $('#line_items').on('change','.qty-value',function(e){
     update_line(this);
   });
-  $('#data .price-value').on('change',function(e){
+  $('#line_items').on('change', '.price-value',function(e){
     $(this).val(to_currency($(this).val()));
     update_line(this);
   });
-  $('#data .linetotal').on('change',function(){
+  $('#line_items').on('change', '.linetotal',function(){
     update_subtotal();
   });
-  $('#data #tax-value').on('change',function(){
+  $('#totals').on('change', '#tax-value',function(){
     $(this).val(to_currency($(this).val()));
     update_finaltotal();
   });
@@ -148,4 +148,21 @@ $(document).ready(function(){
     this.size = this.value.length + this.value.length/8;
   });
 
+  $('#line_items').on('click','.add_line_item',function(){
+    id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
+    line = '<tr class="data-row">'+$('#line_items tbody tr:last').prev().html()+'</tr>';
+    line = line.replace(/attributes_/g,'attributes_'+id);
+    line = line.replace(/attributes]\[/g,'attributes]['+id);
+    $('#line_items tbody tr:visible:last').after(line);
+    return false;
+  });
+
+  $('#line_items').on('click','.delete_line_item',function(){
+    if ($('.delete_line_item').length <= 1) return false;
+    $(this).parents('tr').find('.destroy').val('true').end().hide();
+    $('.linetotal').trigger('change');
+    return false;
+  });
+
+  $('#line_items tbody tr:last').hide();
 });

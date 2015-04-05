@@ -1,21 +1,11 @@
 <head>
   <meta name="description" content="This is a fillable and printable work order / receipt. No download required. Automatic math calculation." />
-  <style>
-  @media print {
-    #addrow {
-      display: none;
-    }
-    #data th {
-      border: 1px solid #984705;
-    }
-  }
-  </style>
-  <title>Free Receipt Maker</title>
+  <title>New Receipt</title>
 </head>
 <body>
   <div id="pagewrap">
     <%= form_for @receipt do |f| %>
-      <div id="workorder" style="margin:0">Receipt</div>
+      <div id="workorder" style="margin:0">New Receipt</div>
       <div id="header">
         <div id="logo">
           <img id="image" src="/assets/logo.jpg" alt="logo" height=100px />
@@ -73,121 +63,43 @@ Customer ID [ABC123]'
           <%= f.text_area :job_description, :class => 'companyinfo', :rows => '6', :cols => '28', :value => '[Job Description]' %>
         </div>
         <div class="clear"></div>
-      <table id="data">
-        <thead>
-          <tr>
-            <th id="cancelh"></th>
-            <th id="qty">Qty</th>
-            <th id="description">Description</th>
-            <th id="price">Unit Price</th>
-            <th id="total">Line Total</th>
+      <div class="line_wrap"></div>
+      <table id="line_items">
+        <tr>
+          <td><%= link_to 'Add Line Item', "#", :class => 'add_line_item' %></td>
+        </tr>
+        <%= f.fields_for :line_items do |line_item| %>
+          <tr class="data-row">
+            <td>
+              <div class="wrapper">
+                <%= line_item.text_field :qty, :class => "qty-value" %>
+              </div>
+            </td>
+            <td>
+              <div class="wrapper">
+              <%= line_item.text_field :description, :class => "description" %>
+              </div>
+            </td>
+            <td>
+              <div class="wrapper">
+              <%= line_item.text_field :unit_price, :class => "price-value" %>
+              </div>
+            </td>
+            <td>
+              <div class="wrapper">
+              <%= line_item.text_field :line_total, :class => "linetotal" %>
+              </div>
+            </td>
+            <td>
+              <%= line_item.hidden_field :id %>
+              <%= line_item.hidden_field :_destroy, :value=> '', :class => 'destroy' %>
+              <%= link_to "Delete Line Item", "#", :class=> 'delete_line_item' %>
+            </td>
           </tr>
-        </thead>
+        <% end %>
+      </table>
+      <table id="totals">
         <tbody>
-          <tr class="odd data-row">
-            <td class="cancelcell">
-               <a class="cancel" href="javascript:;" ></a>
-            </td>
-            <td>
-              <div class="wrapper">
-                <input type="text" class="qty-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" />
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="price-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="linetotal" />
-              </div>
-            </td>
-          </tr>
-          <tr class="even data-row">
-            <td class="cancelcell">
-               <a class="cancel" href="javascript:;" ></a>
-            </td>
-            <td>
-              <div class="wrapper">
-                <input type="text" class="qty-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" />
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="price-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="linetotal" />
-              </div>
-            </td>
-          </tr>
-          <tr class="odd data-row">
-            <td class="cancelcell">
-               <a class="cancel" href="javascript:;" ></a>
-            </td>
-            <td>
-              <div class="wrapper">
-                <input type="text" class="qty-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" />
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="price-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="linetotal" />
-              </div>
-            </td>
-          </tr>
-          <tr class="even data-row" id="fakerow">
-            <td class="cancelcell">
-               <a class="cancel" href="javascript:;" ></a>
-            </td>
-            <td>
-              <div class="wrapper">
-                <input type="text" class="qty-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" />
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="price-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="linetotal" />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="nocancel"></td>
-            <td id="add" colspan="4"><a id="addrow" href="javascript:;">Add Row</a></td>
-          </tr>
           <tr class="even">
             <td class="nocancel"></td>
             <td id="subtotal" colspan="3">Subtotal</td>

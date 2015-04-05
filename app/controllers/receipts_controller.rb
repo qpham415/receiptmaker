@@ -1,10 +1,6 @@
 class ReceiptsController < ApplicationController
-  def welcome
-  end
-
   def index
     @receipts = Receipt.all
-
   end
 
   def show
@@ -13,11 +9,14 @@ class ReceiptsController < ApplicationController
 
   def new
     @receipt = Receipt.new
+    2.times{ @receipt.line_items.build }
   end
 
   def create
     @receipt = Receipt.new(receipt_params)
     @receipt.save
+    @line_item = @receipt.line_items.create(line_item_params)
+
     redirect_to @receipt
   end
 
@@ -33,6 +32,10 @@ class ReceiptsController < ApplicationController
   private
     def receipt_params
       params.require(:receipt).permit!
+    end
+
+    def line_item_params
+      params.permit(:quantity, :description, :unit_price, :line_total)
     end
 
 end

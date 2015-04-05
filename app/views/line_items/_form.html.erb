@@ -1,0 +1,25 @@
+<%= f.fields_for :line_items do |line_item| %>
+  <td class="cancelcell">
+     <a class="cancel" href="javascript:;" ></a>
+  </td>
+  <td>
+    <div class="wrapper">
+      <%= line_item.text_field :qty, :class => "qty-value" %>
+    </div>
+  </td>
+  <td>
+    <div class="wrapper">
+    <%= line_item.text_field :description, :class => "description" %>
+    </div>
+  </td>
+  <td>
+    <div class="wrapper">
+    <%= line_item.text_field :unit_price, :class => "price-value" %>
+    </div>
+  </td>
+  <td>
+    <div class="wrapper">
+    <%= line_item.text_field :line_total, :class => "linetotal" %>
+    </div>
+  </td>
+<% end %>

@@ -54,102 +54,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="odd data-row">
-            <td class="cancelcell">
-            </td>
-            <td>
-              <div class="wrapper">
-                <input type="text" class="qty-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" />
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="price-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="linetotal" />
-              </div>
-            </td>
-          </tr>
-          <tr class="even data-row">
-            <td class="cancelcell">
-            </td>
-            <td>
-              <div class="wrapper">
-                <input type="text" class="qty-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" />
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="price-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="linetotal" />
-              </div>
-            </td>
-          </tr>
-          <tr class="odd data-row">
-            <td class="cancelcell">
-            </td>
-            <td>
-              <div class="wrapper">
-                <input type="text" class="qty-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" />
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="price-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="linetotal" />
-              </div>
-            </td>
-          </tr>
-          <tr class="even data-row" id="fakerow">
-            <td class="cancelcell">
-            </td>
-            <td>
-              <div class="wrapper">
-                <input type="text" class="qty-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" />
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="price-value"/>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <input type="text" class="linetotal" />
-              </div>
-            </td>
-          </tr>
+          <%= render @receipt.line_items %>
           <tr>
             <td class="nocancel"></td>
             <td id="add" colspan="4"></td>
@@ -159,7 +64,7 @@
             <td id="subtotal" colspan="3">Subtotal</td>
             <td>
               <div class="wrapperbottom">
-                $<%= number_with_precision(@receipt.subtotal, :precision => 2) %>
+                <%= @receipt.subtotal %>
               </div>
             </td>
           </tr>
@@ -168,7 +73,7 @@
             <td id="taxes" colspan="3">Sales Tax</td>
             <td>
               <div class="wrapperbottom">
-                $<%= number_with_precision(@receipt.taxes, :precision => 2) %>
+                <%= @receipt.taxes %>
               </div>
             </td>
           </tr>
@@ -177,7 +82,7 @@
             <td id="finaltotal" colspan="3">Total</td>
             <td>
               <div class="wrapperbottom">
-                $<%= number_with_precision(@receipt.total, :precision => 2) %>
+                <%= @receipt.total %>
               </div>
             </td>
           </tr>
