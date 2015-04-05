@@ -236,13 +236,19 @@
    margin: 50px 0;
    float: right;
  }
+ .delete_action {
+   float: left;
+   margin: 50px 0;
+ }
 .submit_button {
+  text-decoration: none;
   padding: 10px 20px;
   border: 0;
   background-color: #f7941d;
   color: #fff;
   font-size: 14px;
   display:inline-block;
+  font-family: Lucida Grande, Arial;
 }
 .cancel_button {
   padding: 10px 20px;
@@ -253,6 +259,16 @@
   display: inline-block;
   text-decoration: none;
   font-family: Lucida Grande, Arial
+}
+.delete_button {
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 0;
+  background-color: red;
+  color: #fff;
+  font-size: 14px;
+  display:inline-block;
+  font-family: Lucida Grande, Arial;
 }
 .textline_top {
   float: right;
@@ -266,7 +282,9 @@
 .wrapperbottom {
   text-align: center;
 }
-
+.new_receipt {
+  padding: 50px 0;
+}
 
  .clear {
    clear: both;

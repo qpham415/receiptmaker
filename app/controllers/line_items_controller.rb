@@ -1,15 +1,31 @@
 class LineItemsController < ApplicationController
+  def index
+    @line_items = LineItem.all
+  end
+
+  def show
+    @line_item = LineItem.find(params[:id])
+  end
+
+  def new
+    @line_item = LineItem.new
+  end
+
+  def edit
+    @line_item = LineItem.find(params[:id])
+  end
+
   def create
-    @receipt = Receipt.find(params[:receipt_id])
-    @line_item = @receipt.line_items.create(line_item_params)
-    redirect_to receipt_path(@receipt)
+    @line_item = LineItem.new(params[:line_item])
+  end
+
+  def update
+    @line_item = LineItem.find(params[:id])
   end
 
   def destroy
-    @receipt = Receipt.find(params[:receipt_id])
-    @line_item = @receipt.line_items.find(params[:id])
+    @line_item = LineItem.find(params[:id])
     @line_item.destroy
-    redirect_to receipt_path(@receipt)
   end
 
   private

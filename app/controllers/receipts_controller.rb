@@ -20,7 +20,18 @@ class ReceiptsController < ApplicationController
     redirect_to @receipt
   end
 
+  def edit
+    @receipt = Receipt.find(params[:id])
+    @line_item = @receipt.line_items.build
+  end
+
   def update
+    @receipt = Receipt.find(params[:id])
+    if @receipt.update(receipt_params)
+      redirect_to @receipt
+    else
+      render 'edit'
+    end
   end
 
   def destroy

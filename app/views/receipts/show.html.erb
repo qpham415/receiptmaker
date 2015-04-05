@@ -17,7 +17,7 @@
       <div id="workorder" style="margin:0">Receipt</div>
       <div id="header">
         <div id="logo">
-          <img id="image_show" src=<%= @receipt.image_link %> alt="logo" height=100px />
+          <img id="image_show" src=<%= @receipt.image_link %> alt="logo" height=100px onerror="hide_image(this);" />
         </div>
         <table id="meta">
           <tbody>
@@ -92,8 +92,9 @@
         <%= @receipt.payable %>
       </div>
       <div id="thankyou">Thank you for your business!</div>
-      <div class="receipt_actions">
-        <%= link_to 'Cancel', receipts_path, :class => "cancel_button" %>
+      <div class="receipt_actions" data-no-turbolink>
+        <%= link_to 'Edit', edit_receipt_path(@receipt), :class => "submit_button" %>
+        <%= link_to 'Close', receipts_path, :class => "cancel_button" %>
       </div>
   </div>
 </body>

@@ -93,6 +93,20 @@ function update_finaltotal () {
   var finaltotal = to_float($('#totals #subtotal-value').val()) + to_float($('#totals #tax-value').val());
   $('#totals #total-value').val(to_currency(finaltotal));
 }
+function update_image () {
+  var image_url = $('#imageloc').val();
+  if (isNaN(image_url)) {
+    document.getElementById('image').src=image_url;
+  } else {
+    document.getElementById('image').src="/assets/logo.jpg";
+  }
+}
+function hide_image () {
+  var image_show = $('#image_show').val();
+  if (image_show = 'alt="logo"') {
+    $('#image_show').hide();
+  }
+}
 
 $(document).ready(function(){
   $('#image').click(function(){
@@ -119,16 +133,6 @@ $(document).ready(function(){
     $('#changeform').hide();
     $('#image').show();
   });
-//  $('#addrow').click(function(){
-//    $('#fakerow').before($('#fakerow').clone().attr('id','').show());
-//    cycle();
-//    update_subtotal();
-//  });
-//  $('.cancel').on('click',function(){
-//    $(this).parents('tr').remove();
-//    cycle();
-//    update_subtotal();
-//  });
   $('#line_items').on('change','.qty-value',function(e){
     update_line(this);
   });
@@ -150,7 +154,7 @@ $(document).ready(function(){
 
   $('#line_items').on('click','.add_line_item',function(){
     id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
-    line = '<tr class="data-row">'+$('#line_items tbody tr:last').prev().html()+'</tr>';
+    line = '<tr class="data-row">'+$('#line_items tbody tr:last').html()+'</tr>';
     line = line.replace(/attributes_/g,'attributes_'+id);
     line = line.replace(/attributes]\[/g,'attributes]['+id);
     $('#line_items tbody tr:visible:last').after(line);
@@ -165,4 +169,7 @@ $(document).ready(function(){
   });
 
   $('#line_items tbody tr:last').hide();
+
+  update_image();
+  hide_image();
 });

@@ -5,8 +5,8 @@
 <body>
   <div id="pagewrap">
     <%= form_for @receipt do |f| %>
-      <div id="workorder" style="margin:0">New Receipt</div>
       <div id="header">
+        <div id="workorder" style="margin:0">New Receipt</div>
         <div id="logo">
           <img id="image" src="/assets/logo.jpg" alt="logo" height=100px />
         </div>
@@ -44,20 +44,20 @@
           <div class="label" id="label-left">FROM</div>
           <%= f.text_area :from_address, :class => 'companyinfo', :rows => '6', :cols => '28', :value =>
             '[Your Company Name]
-[Street Address]
-[City, ST Zip Code]
-Phone [000-000-0000]
-Fax [000-000-0000]
-[e-mail]'
+    [Street Address]
+    [City, ST Zip Code]
+    Phone [000-000-0000]
+    Fax [000-000-0000]
+    [e-mail]'
           %>
           <div class="label">TO</div>
           <%= f.text_area :to_address, :class => 'companyinfo', :rows => '6', :cols => '28', :value =>
             '[Name]
-[Company Name]
-[Street Address]
-[City, ST Zip Code]
-Phone [000-000-0000]
-Customer ID [ABC123]'
+    [Company Name]
+    [Street Address]
+    [City, ST Zip Code]
+    Phone [000-000-0000]
+    Customer ID [ABC123]'
           %>
           <div class="label">JOB</div>
           <%= f.text_area :job_description, :class => 'companyinfo', :rows => '6', :cols => '28', :value => '[Job Description]' %>
