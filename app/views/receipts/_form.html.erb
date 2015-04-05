@@ -113,10 +113,10 @@
   </div>
   <div id="thankyou">Thank you for your business!</div>
   <div class="delete_action">
-    <%= link_to 'Delete', receipt_path(@receipt), :method => :delete, :confirm => 'Are you sure?', :class => 'delete_button' %>
+    <%= link_to 'Delete', receipt_path(@receipt), :method => :delete, data: {:confirm => 'Are you sure?'}, :class => 'delete_button' %>
   </div>
   <div class="receipt_actions">
-    <%= f.submit :class => "submit_button" %>
+    <a><%= f.submit :class => "submit_button" %></a>
     <%= link_to 'Cancel', receipt_path(@receipt), :class => "cancel_button" %>
   </div>
 <% end %>

@@ -1,26 +1,29 @@
-<h1>Listings of All Receipts</h1>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>W.O.#</th>
-    <th>Receipt To</th>
-    <th>Total</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @receipts.each do |receipt| %>
-    <tr data-no-turbolink>
-      <td><%= receipt.date %></td>
-      <td><%= receipt.work_order_id %></td>
-      <td><%= receipt.to_address.lines.first %></td>
-      <td><%= receipt.total %></td>
-      <td><%= link_to 'View', receipt_path(receipt) %></td>
-      <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
-      <td><%= link_to 'Delete', receipt_path(receipt), :method => :delete, :confirm => 'Are you sure?' %></td>
-    </tr>
-  <% end %>
-</table>
-<div class="new_receipt" data-no-turbolink>
-  <%= link_to 'New Receipt', new_receipt_path %>
+<div class="page_wrap">
+  <div class="content">
+    <h2>Listings of All Receipts</h2>
+    <div class="linegrey"></div>
+    <div class="new_receipt" data-no-turbolink>
+      <%= link_to 'New Receipt', new_receipt_path %>
+    </div>
+    <table id="all_articles">
+      <tr class="thead">
+        <th>Date</th>
+        <th>W.O.#</th>
+        <th>Receipt To</th>
+        <th>Total</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% @receipts.each do |receipt| %>
+        <tr data-no-turbolink>
+          <td><%= receipt.date %></td>
+          <td><%= link_to receipt.work_order_id, receipt_path(receipt) %></td>
+          <td><%= receipt.to_address.lines.first %></td>
+          <td><%= receipt.total %></td>
+          <td><%= link_to 'View', receipt_path(receipt) %></td>
+          <td><%= link_to 'Delete', receipt_path(receipt), data: {:confirm => 'Are you sure?'}, :method => :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
