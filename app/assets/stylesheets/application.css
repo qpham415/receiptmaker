@@ -114,6 +114,7 @@
    display: block;
    font-weight: bold;
  }
+ /*
  #data {
    margin-top: 30px;
  }
@@ -168,6 +169,7 @@
  #data td:hover, #data tr.even td:hover {
    background: #ecf170;
  }
+ */
  .cancel {
    background: url('/assets/cancel.png') no-repeat;
    display: block;
@@ -177,8 +179,12 @@
  }
  .wrapper {
    padding: 5px;
-   border: 1px solid #000;
+   margin-right: 15px;
  }
+ .wrapper label {
+   display: block;
+ }
+ /*
  #data td#add {
    padding: 5px;
    text-align: left;
@@ -197,10 +203,7 @@
    border-left: 0;
    padding-right: 10px;
  }
- .wrapperbottom {
-   padding: 5px;
-   border-bottom: 1px solid #984705;
- }
+ */
  #payable {
    padding-top: 30px;
    text-align: center;
@@ -364,15 +367,64 @@
   margin-top: 40px;
   border:1px solid rgba(110,110,110,0.8);
   overflow: auto;
-  width: 100%;
   padding: 30px 0;
-  border-radius: 2px;
+  border-radius: 2px 2px 0 0;
   background-color: rgba(110,110,110,0.1);
 }
 #header {
   margin-top: 40px;
 }
-
+#line_items td input, #totals td input {
+  height: 30px;
+  font-family: Lucida Grande, Arial;
+  font-size: 14px;
+  border: 1px solid rgba(132,132,132,0.6);
+}
+#line_items, #totals {
+  width: 100%;
+}
+#totals {
+  background-color: rgba(110,110,110,0.1);
+}
+.data-row {
+  border: 1px solid rgba(110,110,110,0.8);
+  border-top: none;
+  display: block;
+  padding: 30px;
+}
+.data-row td {
+  margin-right: 10px;
+}
+.desc-cell {
+  display: block;
+}
+.description {
+  width: 80%;
+}
+.delete-cell {
+  float: right;
+}
+.delete_line_item {
+  text-decoration: none;
+  color: #428bca;
+}
+.add_line {
+  padding: 10px 40px;
+  border: 1px solid rgba(110,110,110,0.8);
+  border-top: none;
+  border-bottom: none;
+  background-color: rgba(110,110,110,0.1);
+}
+.add_line a {
+  text-decoration: none;
+  color: #428bca;
+}
+#totals .wrapper {
+  margin-right: 30px;
+}
+#totals .wrapper input {
+  width: 200px;
+}
  .clear {
    clear: both;
  }

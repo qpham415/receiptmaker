@@ -155,7 +155,7 @@ $(document).ready(function(){
     this.size = this.value.length + this.value.length/8;
   });
 
-  $('#line_items').on('click','.add_line_item',function(){
+  $('.add_line').on('click','.add_line_item',function(){
     id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
     line = '<tr class="data-row">'+$('#line_items tbody tr:last').html()+'</tr>';
     line = line.replace(/attributes_/g,'attributes_'+id);

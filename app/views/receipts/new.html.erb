@@ -10,7 +10,7 @@
       <%= form_for @receipt do |f| %>
         <div id="header">
           <div id="logo">
-            <img id="image" src="/assets/logo.jpg" alt="logo" height=100px />
+            <img id="image" src=<%= asset_path('logo.png') %> alt="logo" height=100px />
           </div>
           <div id="logoclick">
             <div class="logobutton"><a id="changelogo" href="javascript:;">Change Logo</a></div>
@@ -56,70 +56,70 @@
         </div>
         <div class="clear"></div>
         <table id="line_items">
-          <tr>
-            <td><%= link_to 'Add Line Item', "#", :class => 'add_line_item' %></td>
-          </tr>
           <%= f.fields_for :line_items do |line_item| %>
             <tr class="data-row">
               <td>
                 <div class="wrapper">
+                  <div class="label">QUANTITY</div>
                   <%= line_item.text_field :qty, :class => "qty-value" %>
                 </div>
               </td>
               <td>
                 <div class="wrapper">
-                <%= line_item.text_field :description, :class => "description" %>
-                </div>
-              </td>
-              <td>
-                <div class="wrapper">
+                  <div class="label">PRICE</div>
                 <%= line_item.text_field :unit_price, :class => "price-value" %>
                 </div>
               </td>
               <td>
                 <div class="wrapper">
+                <div class="label">LINE TOTAL</div>
                 <%= line_item.text_field :line_total, :class => "linetotal" %>
                 </div>
               </td>
-              <td>
+              <td class="delete-cell">
                 <%= line_item.hidden_field :id %>
                 <%= line_item.hidden_field :_destroy, :value=> '', :class => 'destroy' %>
                 <%= link_to "Delete Line Item", "#", :class=> 'delete_line_item' %>
               </td>
+              <td class="desc-cell">
+                <div class="wrapper">
+                <div class="label">DESCRIPTION</div>
+                <%= line_item.text_field :description, :class => "description" %>
+                </div>
+              </td>
             </tr>
           <% end %>
         </table>
+        <div class="add_line" >
+          <%= link_to 'Add Line Item', '#', :class => 'add_line_item' %>
+        </div>
         <table id="totals">
-          <tbody>
-            <tr class="even">
-              <td class="nocancel"></td>
-              <td id="subtotal" colspan="3">Subtotal</td>
-              <td>
-                <div class="wrapperbottom">
-                  <%= f.text_field :subtotal, :id => 'subtotal-value' %>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="nocancel"></td>
-              <td id="taxes" colspan="3">Sales Tax</td>
-              <td>
-                <div class="wrapperbottom">
-                  <%= f.text_field :taxes, :id => 'tax-value' %>
-                </div>
-              </td>
-            </tr>
-            <tr class="even">
-              <td class="nocancel"></td>
-              <td id="finaltotal" colspan="3">Total</td>
-              <td>
-                <div class="wrapperbottom">
-                  <%= f.text_field :total, :id => 'total-value' %>
-                </div>
-              </td>
-            </tr>
-          </tbody>
+          <tr class="data-row">
+            <td>
+              <div class="wrapper">
+                <div class="label">SUBTOTAL</div>
+                <%= f.text_field :subtotal, :id => 'subtotal-value' %>
+              </div>
+            </td>
+            <td>
+              <div class="wrapper">
+                <div class="label">SALES TAX</div>
+                <%= f.text_field :taxes, :id => 'tax-value' %>
+              </div>
+            </td>
+            <td>
+              <div class="wrapper">
+                <div class="label">TOTAL</div>
+                <%= f.text_field :total, :id => 'total-value' %>
+              </div>
+            </td>
+          </tr>
         </table>
+        <% if !@receipt.new_record? %>
+          <div class="delete_action">
+            <%= link_to 'Delete', receipt_path(@receipt), :method => :delete, data: {:confirm => 'Are you sure?'}, :class => 'delete_button' %>
+          </div>
+        <% end %>
         <div class="receipt_actions">
           <%= f.submit :class => "submit_button" %>
           <%= link_to 'Cancel', receipts_path, :class => "cancel_button" %>
