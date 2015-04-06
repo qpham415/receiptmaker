@@ -407,6 +407,8 @@
 .delete_line_item {
   text-decoration: none;
   color: #428bca;
+  background: url(/images/cancel.png) no-repeat;
+  padding: 1px 0 0 25px;
 }
 .add_line {
   padding: 10px 40px;
@@ -416,6 +418,8 @@
   background-color: rgba(110,110,110,0.1);
 }
 .add_line a {
+  background: url(/images/plus.png) no-repeat;
+  padding: 1px 0 0 25px;
   text-decoration: none;
   color: #428bca;
 }
