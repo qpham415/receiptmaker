@@ -21,11 +21,7 @@
      }
  }
  body {
-   background-color: white;
- }
- #pagewrap {
-   margin: 50px auto 30px auto;
-   width: 820px;
+   background-color: rgba(132,132,132,0.2);
  }
  #workorder {
    text-align: right;
@@ -34,27 +30,41 @@
    margin-top: 50px;
  }
  #logo {
-   text-align: left;
+   text-align: center;
    float: left;
    margin-left: 20px;
-   width: 600px;
+   width: 45%;
  }
  #logoclick, #changeform {
-   text-align: left;
+   text-align: center;
    float: left;
-   margin-left: 20px;
-   width: 600px;
+   width: 45%;
    height: 100px;
+ }
+ #changeform {
    display: none;
  }
  .logobutton {
-   border: 1px solid black;
-   padding: 5px;
-   margin-left: 3px;
    float: left;
+   padding: 5px;
+ }
+ .logobutton a {
+   text-decoration: none;
+   padding: 10px 20px;
+   border: 0;
+   background-color: rgba(130,130,130,0.6);
+   color: #000;
+   font-size: 14px;
+   display:inline-block;
+   font-family: Lucida Grande, Arial;
+   border-radius: 3px;
+   border: 1px solid rgba(110,110,110,1);
  }
  #imageinput {
    margin: 8px 0 0 3px;
+ }
+ #imageloc {
+   height: 30px;
  }
  #imageinstr {
    margin: 10px 0 0 3px;
@@ -91,9 +101,7 @@
    height: 1px;
    width: 100%;
  }
- #label-left {
-   margin-left: 20px;
- }
+
  .companyinfo {
    float: left;
    text-align: left;
@@ -102,9 +110,9 @@
    background: #ecf170;
  }
  .label {
-   float: left;
    margin-right: 5px;
-   color: #984806;
+   display: block;
+   font-weight: bold;
  }
  #data {
    margin-top: 30px;
@@ -227,9 +235,6 @@
    margin:0;
    padding:0;
  }
- #address {
-   padding-top: 30px;
- }
  .from_wrap {
    display: inline-block;
    width: 264px;
@@ -297,14 +302,14 @@
   border-bottom: 1px solid rgba(132,132,132,1);
 }
 #all_articles td {
-  padding: 5px;
+  padding: 10px;
 }
 #all_articles td a {
   text-decoration: none;
   color: #428bca;
 }
 #all_articles th {
-  padding: 10px;
+  padding: 15px 10px;
   text-align: left;
 }
 .content {
@@ -314,6 +319,8 @@
   border: 1px solid rgba(110,110,110,0.8);
   padding: 35px;
   border-radius: 3px;
+  background: #fff;
+  overflow: auto;
 }
 .thead {
   background-color: #BDBDBD;
@@ -321,7 +328,7 @@
 .new_receipt {
   padding-top: 30px;
 }
-.new_receipt a {
+#new_button {
   text-decoration: none;
   padding: 10px 20px;
   border: 0;
@@ -333,6 +340,37 @@
   border-radius: 3px;
   font-weight: bold;
   border: 1px solid rgba(132,132,132,1);
+}
+.entry {
+  float: left;
+  padding: 10px 20px;
+  margin-left: 20px;
+}
+.entry input {
+  height: 30px;
+  font-family: Lucida Grande, Arial;
+  font-size: 14px;
+  border: 1px solid rgba(132,132,132,0.6);
+}
+.entry textarea {
+  font-family: Lucida Grande, Arial;
+  font-size: 14px;
+  border: 1px solid rgba(132,132,132,0.6);
+}
+#receipt_work_order_id {
+  width: 250px;
+}
+.form_middle {
+  margin-top: 40px;
+  border:1px solid rgba(110,110,110,0.8);
+  overflow: auto;
+  width: 100%;
+  padding: 30px 0;
+  border-radius: 2px;
+  background-color: rgba(110,110,110,0.1);
+}
+#header {
+  margin-top: 40px;
 }
 
  .clear {

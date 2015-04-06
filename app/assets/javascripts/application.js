@@ -109,17 +109,18 @@ function hide_image () {
 }
 
 $(document).ready(function(){
-  $('#image').click(function(){
-    $(this).hide();
-    $('#logoclick').show();
-  });
+//  $('#image').click(function(){
+//    $(this).hide();
+//    $('#logoclick').show();
+//  });
   $('#deletelogo').click(function(){
-    $('#logoclick').hide();
+    document.getElementById('image').src="/assets/logo.jpg"
+    document.getElementById('imageloc').value='';
   });
-  $('#cancellogo').click(function(){
-    $('#logoclick').hide();
-    $('#image').show();
-  });
+//  $('#cancellogo').click(function(){
+//    $('#logoclick').hide();
+//    $('#image').show();
+//  });
   $('#changelogo').click(function(){
     $('#logoclick').hide();
     $('#changeform').show();
@@ -131,6 +132,8 @@ $(document).ready(function(){
   $("#changesave").click(function(){
     $("#image").attr('src',$("#imageloc").val());
     $('#changeform').hide();
+    $('#logoclick').show();
+    update_image();
     $('#image').show();
   });
   $('#line_items').on('change','.qty-value',function(e){

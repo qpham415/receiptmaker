@@ -4,139 +4,127 @@
 </head>
 <body>
   <div id="pagewrap">
-    <%= form_for @receipt do |f| %>
-      <div id="header">
-        <div id="workorder" style="margin:0">New Receipt</div>
-        <div id="logo">
-          <img id="image" src="/assets/logo.jpg" alt="logo" height=100px />
+    <div class="content">
+      <h2 style="color:#6E6E6E">New Receipt</h2>
+      <div class="linegrey"></div>
+      <%= form_for @receipt do |f| %>
+        <div id="header">
+          <div id="logo">
+            <img id="image" src="/assets/logo.jpg" alt="logo" height=100px />
+          </div>
+          <div id="logoclick">
+            <div class="logobutton"><a id="changelogo" href="javascript:;">Change Logo</a></div>
+            <div class="logobutton"><a id="deletelogo" href="javascript:;">Delete Logo</a></div>
+          </div>
+          <div id="changeform">
+            <div class="logobutton"><a id="changesave" href="javascript:;">Save Logo</a></div>
+            <div class="logobutton"><a id="changecancel" href="javascript:;">Cancel</a></div>
+            <div class="clear"></div>
+            <div id="imageinput">
+              <%= f.text_field :image_link, :size => '50', :id => 'imageloc' %>
+            </div>
+            <div class="clear"></div>
+            <div id="imageinstr">Enter Logo URL</div>
+          </div>
         </div>
-        <div id="logoclick">
-          <div class="logobutton"><a id="changelogo" href="javascript:;">Change Logo</a></div>
-          <div class="logobutton"><a id="deletelogo" href="javascript:;">Delete Logo</a></div>
-          <div class="logobutton"><a id="cancellogo" href="javascript:;">Cancel</a></div>
-        </div>
-        <div id="changeform">
-          <div class="logobutton"><a id="changesave" href="javascript:;">Save Logo</a></div>
-          <div class="logobutton"><a id="changecancel" href="javascript:;">Cancel</a></div>
-          <div class="clear"></div>
-          <div id="imageinput">
-            <%= f.text_field :image_link, :size => '50', :id => 'imageloc' %>
+        <div class="clear"></div>
+        <div class="form_middle">
+          <div class="entry">
+            <div class="label">DATE</div>
+            <%= f.text_field :date %>
+          </div>
+          <div class="entry">
+            <div class="label">ORDER #</div>
+            <%= f.text_field :work_order_id %>
           </div>
           <div class="clear"></div>
-          <div id="imageinstr">Enter Logo URL</div>
+          <div id="address">
+            <div class="entry">
+              <div class="label">FROM</div>
+              <%= f.text_area :from_address, :class => 'companyinfo', :rows => '6', :cols => '40' %>
+            </div>
+            <div class="entry">
+              <div class="label">TO</div>
+              <%= f.text_area :to_address, :class => 'companyinfo', :rows => '6', :cols => '40' %>
+            </div>
+          </div>
+          <div class="clear"></div>
+          <div id="description" class="entry">
+            <div class="label">JOB DESCRIPTION</div>
+            <%= f.text_area :job_description, :class => 'companyinfo', :rows => '4', :cols => '87' %>
+          </div>
         </div>
-        <table id="meta">
+        <div class="clear"></div>
+        <table id="line_items">
+          <tr>
+            <td><%= link_to 'Add Line Item', "#", :class => 'add_line_item' %></td>
+          </tr>
+          <%= f.fields_for :line_items do |line_item| %>
+            <tr class="data-row">
+              <td>
+                <div class="wrapper">
+                  <%= line_item.text_field :qty, :class => "qty-value" %>
+                </div>
+              </td>
+              <td>
+                <div class="wrapper">
+                <%= line_item.text_field :description, :class => "description" %>
+                </div>
+              </td>
+              <td>
+                <div class="wrapper">
+                <%= line_item.text_field :unit_price, :class => "price-value" %>
+                </div>
+              </td>
+              <td>
+                <div class="wrapper">
+                <%= line_item.text_field :line_total, :class => "linetotal" %>
+                </div>
+              </td>
+              <td>
+                <%= line_item.hidden_field :id %>
+                <%= line_item.hidden_field :_destroy, :value=> '', :class => 'destroy' %>
+                <%= link_to "Delete Line Item", "#", :class=> 'delete_line_item' %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        <table id="totals">
           <tbody>
-            <tr>
-              <td class="meta-head">Date</td>
-              <td><%= f.text_field :date, :value => '[Enter a Date]' %></td>
+            <tr class="even">
+              <td class="nocancel"></td>
+              <td id="subtotal" colspan="3">Subtotal</td>
+              <td>
+                <div class="wrapperbottom">
+                  <%= f.text_field :subtotal, :id => 'subtotal-value' %>
+                </div>
+              </td>
             </tr>
             <tr>
-              <td class="meta-head">W.O. #</td>
-              <td><%= f.text_field :work_order_id, :value => '[100]' %></td>
+              <td class="nocancel"></td>
+              <td id="taxes" colspan="3">Sales Tax</td>
+              <td>
+                <div class="wrapperbottom">
+                  <%= f.text_field :taxes, :id => 'tax-value' %>
+                </div>
+              </td>
+            </tr>
+            <tr class="even">
+              <td class="nocancel"></td>
+              <td id="finaltotal" colspan="3">Total</td>
+              <td>
+                <div class="wrapperbottom">
+                  <%= f.text_field :total, :id => 'total-value' %>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
-        <div class="clear"></div>
-      </div>
-        <div id="line"></div>
-        <div id="address">
-          <div class="label" id="label-left">FROM</div>
-          <%= f.text_area :from_address, :class => 'companyinfo', :rows => '6', :cols => '28', :value =>
-            '[Your Company Name]
-    [Street Address]
-    [City, ST Zip Code]
-    Phone [000-000-0000]
-    Fax [000-000-0000]
-    [e-mail]'
-          %>
-          <div class="label">TO</div>
-          <%= f.text_area :to_address, :class => 'companyinfo', :rows => '6', :cols => '28', :value =>
-            '[Name]
-    [Company Name]
-    [Street Address]
-    [City, ST Zip Code]
-    Phone [000-000-0000]
-    Customer ID [ABC123]'
-          %>
-          <div class="label">JOB</div>
-          <%= f.text_area :job_description, :class => 'companyinfo', :rows => '6', :cols => '28', :value => '[Job Description]' %>
+        <div class="receipt_actions">
+          <%= f.submit :class => "submit_button" %>
+          <%= link_to 'Cancel', receipts_path, :class => "cancel_button" %>
         </div>
-        <div class="clear"></div>
-      <div class="line_wrap"></div>
-      <table id="line_items">
-        <tr>
-          <td><%= link_to 'Add Line Item', "#", :class => 'add_line_item' %></td>
-        </tr>
-        <%= f.fields_for :line_items do |line_item| %>
-          <tr class="data-row">
-            <td>
-              <div class="wrapper">
-                <%= line_item.text_field :qty, :class => "qty-value" %>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <%= line_item.text_field :description, :class => "description" %>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <%= line_item.text_field :unit_price, :class => "price-value" %>
-              </div>
-            </td>
-            <td>
-              <div class="wrapper">
-              <%= line_item.text_field :line_total, :class => "linetotal" %>
-              </div>
-            </td>
-            <td>
-              <%= line_item.hidden_field :id %>
-              <%= line_item.hidden_field :_destroy, :value=> '', :class => 'destroy' %>
-              <%= link_to "Delete Line Item", "#", :class=> 'delete_line_item' %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-      <table id="totals">
-        <tbody>
-          <tr class="even">
-            <td class="nocancel"></td>
-            <td id="subtotal" colspan="3">Subtotal</td>
-            <td>
-              <div class="wrapperbottom">
-                <%= f.text_field :subtotal, :id => 'subtotal-value' %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="nocancel"></td>
-            <td id="taxes" colspan="3">Sales Tax</td>
-            <td>
-              <div class="wrapperbottom">
-                <%= f.text_field :taxes, :id => 'tax-value' %>
-              </div>
-            </td>
-          </tr>
-          <tr class="even">
-            <td class="nocancel"></td>
-            <td id="finaltotal" colspan="3">Total</td>
-            <td>
-              <div class="wrapperbottom">
-                <%= f.text_field :total, :id => 'total-value' %>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div id="payable">Make all checks payable to
-        <%= f.text_field :payable, :value => '[Your Company Name]', :size => "22" %>
-      </div>
-      <div id="thankyou">Thank you for your business!</div>
-      <div class="receipt_actions">
-        <%= f.submit :class => "submit_button" %>
-        <%= link_to 'Cancel', receipts_path, :class => "cancel_button" %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </body>
