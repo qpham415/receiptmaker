@@ -98,7 +98,7 @@ function update_image () {
   if (isNaN(image_url)) {
     document.getElementById('image').src=image_url;
   } else {
-    document.getElementById('image').src="/assets/logo.jpg";
+    document.getElementById('image').src="/images/logo.jpg";
   }
 }
 function hide_image () {
