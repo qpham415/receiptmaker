@@ -1,24 +1,26 @@
-<tr class="data-row">
-  <td class="cancelcell">
-  </td>
+<tr class="show_row">
   <td>
-    <div class="wrapper">
+    <div class="show_wrap">
       <%= line_item.qty %>
     </div>
   </td>
   <td>
-    <div class="wrapper">
+    <div class="show_wrap">
     <%= line_item.description %>
     </div>
   </td>
   <td>
-    <div class="wrapper">
+    <div class="show_wrap">
     <%= line_item.unit_price %>
     </div>
   </td>
   <td>
-    <div class="wrapper">
+    <div class="show_wrap">
     <%= line_item.line_total %>
     </div>
   </td>
 </tr>
+<script type="text/javascript">
+  $('.show_row:odd').addClass("even").removeClass("odd");
+  $('.show_row:even').addClass("odd").removeClass("even");
+</script>

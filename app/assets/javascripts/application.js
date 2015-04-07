@@ -15,10 +15,10 @@
 //= require turbolinks
 //= require_tree .
 
-function cycle(){
-  $('.data-row:odd').addClass("even").removeClass("odd");
-  $('.data-row:even').addClass("odd").removeClass("even");
-}
+//function cycle(){
+//  $('.data-row:odd').addClass("even").removeClass("odd");
+//  $('.data-row:even').addClass("odd").removeClass("even");
+//}
 // from http://www.mediacollege.com/internet/javascript/number/round.html
 function roundNumber(number,decimals) {
   var newString;// The new rounded number
@@ -151,9 +151,9 @@ $(document).ready(function(){
     update_finaltotal();
   });
 
-  $('#receipt_payable').on('keyup', function(){
-    this.size = this.value.length + this.value.length/8;
-  });
+//  $('#receipt_payable').on('keyup', function(){
+//    this.size = this.value.length + this.value.length/8;
+//  });
 
   $('.add_line').on('click','.add_line_item',function(){
     id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;

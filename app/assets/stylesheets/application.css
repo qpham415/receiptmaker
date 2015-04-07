@@ -35,6 +35,11 @@
    margin-left: 20px;
    width: 45%;
  }
+ #logo_show {
+   float: left;
+   margin-left: 40px;
+ }
+
  #logoclick, #changeform {
    text-align: center;
    float: left;
@@ -90,10 +95,8 @@
    background: #ecf170;
  }
  #line {
-   margin: 15px 0 0 20px;
    background-color:#984806;
    height: 1.5px;
-   width: 800px;
  }
 .linegrey {
    margin-top: 10px;
@@ -114,7 +117,7 @@
    display: block;
    font-weight: bold;
  }
- /*
+
  #data {
    margin-top: 30px;
  }
@@ -127,49 +130,44 @@
    border-top: 1px solid #984705;
    text-align: center;
  }
- #data th#cancelh {
-   background: #ffffff;
-   border: 0;
-   width: 20px;
-   padding: 0;
- }
  #data th#qty {
-   width: 60px;
+   width: 65px;
    border-left: 1px solid #984705;
  }
- #data #description {
-   width: 400px;
+ #data th#description {
+   width: 405px;
  }
  #data th#price {
-   width: 160px;
+   width: 165px;
  }
  #data th#total {
-   width: 160px;
+   width: 165px;
    border-right: 1px solid #984705;
  }
  #data td {
    border-right: 1px solid #984806;
    border-left: 1px solid #984806;
    border-style: none solid;
- }
- #data input {
-   background: transparent;
-   border: 0px;
-   width: 100%;
-   text-align: center;
+   padding: 5px;
  }
  #data tr.even td {
    background-color: #fde9d8;
  }
- #data tr td.cancelcell {
-   width: 20px;
-   border: 0;
+ #data td#subtotal, #data td#taxes, #data td#finaltotal {
+   color: #7e7e7e;
+   text-align: right;
    background: #ffffff;
+   border-left: 0;
+   padding-right: 10px;
  }
- #data td:hover, #data tr.even td:hover {
-   background: #ecf170;
+ #data td#last_cell {
+   border-bottom: 1px solid #984705;
  }
- */
+ #data td.separator {
+  padding: 5px;
+  border: 1px solid #984705;
+ }
+
  .cancel {
    background: url('/assets/cancel.png') no-repeat;
    display: block;
@@ -184,48 +182,13 @@
  .wrapper label {
    display: block;
  }
- /*
- #data td#add {
-   padding: 5px;
-   text-align: left;
-   border: 1px solid #984705;
- }
- #data td#add:hover, #data tr.even td.cancelcell {
-   background: #ffffff;
- }
- #fakerow {
-   display:none;
- }
- #data td#subtotal, #data td#taxes, #data td#finaltotal {
-   color: #7e7e7e;
-   text-align: right;
-   background: #ffffff;
-   border-left: 0;
-   padding-right: 10px;
- }
- */
- #payable {
-   padding-top: 30px;
-   text-align: center;
- }
- #payable input {
-   border: 0;
- }
- #payable input:hover {
-   background: #ecf170;
- }
  #thankyou {
-   margin-top: 5px;
+   margin-top: 50px;
    text-align: center;
    font-weight: bold;
    font-size: 1.1em;
    font-style: italic;
    font-family:"Verdana", Verdana, Sans-serif;
- }
- #data td.nocancel, #data tr.even td.nocancel {
-   width: 20px;
-   border: 0;
-   background: white;
  }
  table {
    border-collapse: collapse;
@@ -251,6 +214,10 @@
    float: right;
  }
  .delete_action {
+   float: left;
+   margin: 50px 0;
+ }
+ .left_buttons {
    float: left;
    margin: 50px 0;
  }
@@ -288,10 +255,21 @@
   float: right;
   padding: 2px;
 }
+#address_wrap {
+  margin-top: 30px;
+}
+.address {
+  text-align: left;
+  display: inline-block;
+  width: 30%;
+}
+.label_show {
+  color: #984806;
+  font-weight: bold;
+}
 .address_box {
-  white-space: pre;
+  white-space: pre-line;
   float: left;
-  width: 25%;
 }
 .wrapperbottom {
   text-align: center;
@@ -324,6 +302,11 @@
   border-radius: 3px;
   background: #fff;
   overflow: auto;
+}
+.content_show {
+  width: 800px;
+  display: inline-block;
+  margin-top: 50px;
 }
 .thead {
   background-color: #BDBDBD;
@@ -370,7 +353,7 @@
   border-radius: 2px 2px 0 0;
   background-color: rgba(110,110,110,0.1);
 }
-#header {
+#form_header {
   margin-top: 40px;
 }
 #line_items td input, #totals td input {
