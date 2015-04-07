@@ -428,6 +428,12 @@
 #totals .wrapper input {
   width: 200px;
 }
+#error_explanation {
+  padding-left: 30px;
+  font-size: 14px;
+  color: red;
+}
+
  .clear {
    clear: both;
  }
