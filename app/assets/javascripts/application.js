@@ -114,7 +114,7 @@ $(document).ready(function(){
 //    $('#logoclick').show();
 //  });
   $('#deletelogo').click(function(){
-    document.getElementById('image').src="/assets/logo.jpg"
+    document.getElementById('image').src="/images/logo.jpg"
     document.getElementById('imageloc').value='';
   });
 //  $('#cancellogo').click(function(){

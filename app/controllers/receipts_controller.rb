@@ -15,9 +15,14 @@ class ReceiptsController < ApplicationController
   def create
     @receipt = Receipt.new(receipt_params)
     @receipt.save
-    @line_item = @receipt.line_items.create(line_item_params)
 
+    if @receipt.save
+    @line_item = @receipt.line_items.create(line_item_params)
     redirect_to @receipt
+    else
+    render 'new'
+    end
+
   end
 
   def edit

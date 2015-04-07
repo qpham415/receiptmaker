@@ -1,4 +1,17 @@
 <%= form_for @receipt do |f| %>
+  <% if @receipt.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@receipt.errors.count, "error") %> prohibited
+        this recept from being saved:
+      </h2>
+      <ul>
+        <% @receipt.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div id="header">
     <div id="logo">
       <img id="image" src='/images/logo.jpg' alt="logo" height=100px />
