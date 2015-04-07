@@ -95,7 +95,7 @@ function update_finaltotal () {
 }
 function update_image () {
   var image_url = $('#imageloc').val();
-  if (isNaN(image_url)) {
+  if (image_url) {
     document.getElementById('image').src=image_url;
   } else {
     document.getElementById('image').src="/images/logo.jpg";

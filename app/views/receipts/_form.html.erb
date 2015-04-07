@@ -126,6 +126,10 @@
   <% end %>
   <div class="receipt_actions">
     <%= f.submit :class => "submit_button" %>
-    <%= link_to 'Cancel', receipts_path, :class => "cancel_button" %>
+    <% if !@receipt.new_record? %>
+      <%= link_to 'Cancel', receipt_path(@receipt), :class=> "cancel_button" %>
+    <% else %>
+      <%= link_to 'Cancel', receipts_path, :class => "cancel_button" %>
+    <% end %>
   </div>
 <% end %>
