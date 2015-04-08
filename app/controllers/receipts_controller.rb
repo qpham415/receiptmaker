@@ -5,6 +5,16 @@ class ReceiptsController < ApplicationController
 
   def show
     @receipt = Receipt.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name",
+        :template => 'receipts/print.html.erb',
+        :wkhtmltopdf => '/usr/bin/wkhtmltopdf',
+        :layout => 'layouts/pdf.html.erb',
+        :page_size => "Letter"
+      end
+    end
   end
 
   def new

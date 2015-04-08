@@ -1,26 +1,18 @@
 <head>
-  <meta name="description" content="This is a fillable and printable work order / receipt. No download required. Automatic math calculation." />
-  <style>
-  @media print {
-    .content {
-      border: none;
-    }
-    body {
-      background: none;
-    }
-    .no-print {
-      display: none;
-    }
-  }
-  </style>
   <title>Free Receipt Maker</title>
+  <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.0.min.js" %>
+  <%= javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" %>
+  <script type="text/javascript">
+    $('.show_row:odd').addClass("even").removeClass("odd");
+    $('.show_row:even').addClass("odd").removeClass("even");
+  </script>
 </head>
 <div class="content" style="text-align:center">
   <div class="content_show">
     <div id="workorder" style="margin:0">Receipt</div>
     <div id="header">
       <div id="logo_show">
-        <img id="image_show" src=<%= @receipt.image_link %> alt="logo" height=100px onerror="hide_image(this);" />
+        <%= image_tag embed_remote_image(@receipt.image_link, 'image/png' ) %>
       </div>
       <table id="meta">
         <tbody>
@@ -51,14 +43,6 @@
         <div class="address_box"><%= @receipt.job_description %></div>
       </div>
     </div>
-<!--    <script type="text/javascript" >
-      var heights = $(".address").map(function (){
-          return $(this).height();
-      }).get(),
-
-      maxHeight = Math.max.apply(null, heights);
-      $('.address').height(maxHeight);
-    </script> -->
     <div class="clear"></div>
     <table id="data">
       <thead>

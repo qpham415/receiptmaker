@@ -12,14 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= stub print
  */
- @media print
- {
-     .no-print, .no-print *
-     {
-         display: none !important;
-     }
- }
+
  body {
    background-color: rgba(132,132,132,0.2);
  }

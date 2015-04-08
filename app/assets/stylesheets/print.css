@@ -1,0 +1,9 @@
+.content {
+   border: none;
+ }
+ body {
+   background: none;
+ }
+ .no-print {
+   display: none;
+ }

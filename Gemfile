@@ -30,6 +30,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# PDF generator gem
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 gem 'rails_12factor', group: :production
 
 group :production do
