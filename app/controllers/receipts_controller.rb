@@ -11,8 +11,7 @@ class ReceiptsController < ApplicationController
         render pdf: "receipt_#{@receipt.work_order_id}",
         :template => 'receipts/print.html.erb',
         :wkhtmltopdf => '/usr/bin/wkhtmltopdf',
-        :layout => 'layouts/pdf.html.erb',
-        :page_size => "Letter"
+        :layout => 'layouts/pdf.html.erb'
       end
     end
   end
