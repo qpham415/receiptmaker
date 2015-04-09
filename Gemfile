@@ -32,7 +32,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # PDF generator gem
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
 
 gem 'rails_12factor', group: :production
 
