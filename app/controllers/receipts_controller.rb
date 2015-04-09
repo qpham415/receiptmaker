@@ -8,7 +8,7 @@ class ReceiptsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "file_name",
+        render pdf: "receipt_#{@receipt.work_order_id}",
         :template => 'receipts/print.html.erb',
         :wkhtmltopdf => '/usr/bin/wkhtmltopdf',
         :layout => 'layouts/pdf.html.erb',
