@@ -288,7 +288,7 @@
 .content {
   width: 960px;
   margin: 25px auto;
-  font-family: "Trebuchet MS";
+  font-family: "Trebuchet MS", sans-serif;
   border: 1px solid rgba(110,110,110,0.8);
   padding: 35px;
   border-radius: 3px;
