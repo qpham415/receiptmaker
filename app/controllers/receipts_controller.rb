@@ -10,7 +10,8 @@ class ReceiptsController < ApplicationController
       format.pdf do
         render pdf: "receipt_#{@receipt.work_order_id}",
         :template => 'receipts/print.html.erb',
-        :layout => 'layouts/pdf.html.erb'
+        :layout => 'layouts/pdf.html.erb',
+        :page_size => 'Letter'
       end
     end
   end
