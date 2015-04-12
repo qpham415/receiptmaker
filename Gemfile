@@ -34,6 +34,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # PDF generator gem
 gem 'wicked_pdf'
 
+# Devise authentication
+gem 'devise'
+gem 'omniauth'
+
 gem 'rails_12factor', group: :production
 
 group :production do

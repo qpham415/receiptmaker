@@ -1,4 +1,6 @@
 class ReceiptsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @receipts = Receipt.all
   end
