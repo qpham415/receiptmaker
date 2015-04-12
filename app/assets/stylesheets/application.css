@@ -70,6 +70,10 @@
    font-style: italic;
    font-weight: bold;
  }
+ #image_show, #image {
+   max-height: 100px;
+   max-width: 400px;
+ }
  #meta {
    float: right;
  }
