@@ -40,20 +40,20 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # ActionMailer Config
-config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-# change to true to allow email to be sent during development
-config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = true
-config.action_mailer.default :charset => "utf-8"
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-      :address => "smtp.gmail.com",
-      :port => 587,
-      :domain => 'receiptmaker.heorokuapp.com:80',
-      :user_name => "88pancakefactory@gmail.com",
-      :password => "parkpickle",
-      :authentication => :plain,
-      :enable_starttls_auto => true
-}
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # change to true to allow email to be sent during development
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+        :address => "smtp.gmail.com",
+        :port => 587,
+        :domain => 'receiptmaker.heorokuapp.com:80',
+        :user_name => "88pancakefactory@gmail.com",
+        :password => "parkpickle",
+        :authentication => :plain,
+        :enable_starttls_auto => true
+  }
 
 end
