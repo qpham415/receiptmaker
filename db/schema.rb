@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412073528) do
+ActiveRecord::Schema.define(version: 20150413192226) do
 
   create_table "line_items", force: :cascade do |t|
     t.string   "qty"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20150412073528) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
