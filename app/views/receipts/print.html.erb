@@ -17,7 +17,9 @@
     <div id="workorder" style="margin:0">Receipt</div>
     <div id="header">
       <div id="logo_show">
-        <%= image_tag embed_remote_image(@receipt.image_link, 'image/png' ), :height => '100px' %>
+        <% if @receipt.image_link? %>
+          <%= image_tag embed_remote_image(@receipt.image_link, 'image/png' ), :id => "image_show" %>
+        <% end %>
       </div>
       <table id="meta">
         <tbody>
