@@ -35,7 +35,11 @@
   <div class="form_middle">
     <div class="entry">
       <div class="label">DATE</div>
-      <%= f.text_field :date %>
+      <% if !@receipt.new_record? %>
+        <%= f.text_field :date, :value => @receipt.date.strftime("%d/%m/%Y") %>
+      <% else %>
+        <%= f.text_field :date %>
+      <% end %>
     </div>
     <div class="entry">
       <div class="label">ORDER #</div>
