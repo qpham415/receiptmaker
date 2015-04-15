@@ -1,4 +1,5 @@
 class Receipt < ActiveRecord::Base
+  belongs_to :user
   has_many :line_items
   validates_presence_of :date, :from_address, :to_address
   validate :date_is_date?

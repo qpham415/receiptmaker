@@ -2,11 +2,11 @@ class ReceiptsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @receipts = Receipt.all
+    @receipts = current_user.receipts.all
   end
 
   def show
-    @receipt = Receipt.find(params[:id])
+    @receipt = current_user.receipts.find(params[:id])
     respond_to do |format|
       format.html
       format.pdf do
@@ -19,12 +19,12 @@ class ReceiptsController < ApplicationController
   end
 
   def new
-    @receipt = Receipt.new
+    @receipt = current_user.receipts.build
     2.times{ @receipt.line_items.build }
   end
 
   def create
-    @receipt = Receipt.new(receipt_params)
+    @receipt = current_user.receipts.build(receipt_params)
     @receipt.save
 
     if @receipt.save
@@ -37,12 +37,12 @@ class ReceiptsController < ApplicationController
   end
 
   def edit
-    @receipt = Receipt.find(params[:id])
+    @receipt = current_user.receipts.find(params[:id])
     @line_item = @receipt.line_items.build
   end
 
   def update
-    @receipt = Receipt.find(params[:id])
+    @receipt = current_user.receipts.find(params[:id])
     if @receipt.update(receipt_params)
       redirect_to @receipt
     else

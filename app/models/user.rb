@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :receipts
   # Include default devise modules. Others available are:
   # :lockable, :confirmable
   devise :database_authenticatable, :registerable,
