@@ -7,9 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <p style="float:right">
+  <p class="notice no-print"><%= notice %></p>
+  <p class="alert no-print"><%= alert %></p>
+  <p class="no-print" style="float:right">
     <% if user_signed_in? %>
       Signed in as <%= current_user.email %>.
       <%= link_to 'Edit Profile', edit_user_registration_path %> |

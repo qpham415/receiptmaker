@@ -1,17 +1,14 @@
-<head>
-  <title>Free Receipt Maker</title>
-  <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.0.min.js" %>
-  <%= javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" %>
-  <script type="text/javascript">
-    $('.show_row:odd').addClass("even").removeClass("odd");
-    $('.show_row:even').addClass("odd").removeClass("even");
-  </script>
-  <style type="text/css">
-  .content {border: none;}
-   body {background: none;}
-   .no-print {display: none;}
-  </style>
-</head>
+<%= javascript_include_tag "http://code.jquery.com/jquery-1.10.0.min.js" %>
+<%= javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" %>
+<script type="text/javascript">
+  $('.show_row:odd').addClass("even").removeClass("odd");
+  $('.show_row:even').addClass("odd").removeClass("even");
+</script>
+<style type="text/css">
+.content {border: none;}
+ body {background: none;}
+ .no-print {display: none;}
+</style>
 <div class="content" style="text-align:center">
   <div class="content_show">
     <div id="workorder" style="margin:0">Receipt</div>
