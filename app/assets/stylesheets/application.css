@@ -221,7 +221,7 @@
   text-decoration: none;
   padding: 10px 20px;
   border: 0;
-  background-color: #f7941d;
+  background-color: #428bca;
   color: #fff;
   font-size: 14px;
   display:inline-block;
@@ -429,7 +429,7 @@
   font-family: "Trebuchet MS", sans-serif;
 }
 .sign_in {
-  margin: 20px 70px 0 0;
+  margin: 15px 70px 0 0;
   float: right;
 }
 .sign_in a {
@@ -442,7 +442,71 @@
   margin: 5px 70px;
   color: rgba(110,110,110,1);
 }
-
+.header_text {
+  color: #6E6E6E;
+}
+.sign_in_wrap {
+  float: left;
+  width: 50%;
+  border: 1px solid rgba(110,110,110,0.6);
+  padding: 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+.field {
+  padding: 10px 20px;
+}
+.field label {
+  font-weight: bold;
+  display: block;
+  float: left;
+}
+.field input {
+  height: 30px;
+  width: 100%;
+  font-family: Lucida Grande, Arial;
+  font-size: 14px;
+  border: 1px solid rgba(132,132,132,0.6);
+}
+.actions {
+  float: left;
+  padding: 10px 20px;
+}
+.shared_links {
+  padding: 10px 20px;
+  text-align: left;
+}
+.shared_links a {
+  text-decoration: none;
+  color: #428bca;
+}
+.social_links {
+  padding: 10px 0;
+  overflow: auto;
+}
+.social_logo {
+  width: 64px;
+  height: 64px;
+  margin: 10px;
+  float: left;
+}
+.social_logo a {
+  display: block;
+  width: 64px;
+  height: 64px;
+}
+.google {
+  background: url(/images/google.png) no-repeat;
+}
+.twitter {
+  background: url(/images/twitter.png) no-repeat;
+}
+.facebook {
+  background: url(/images/facebook.png) no-repeat;
+}
+.linkedin {
+  background: url(/images/linkedin.png) no-repeat;
+}
  .clear {
    clear: both;
  }
