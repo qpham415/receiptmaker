@@ -8,95 +8,94 @@
 .content {border: none;}
  body {background: none;}
  .no-print {display: none;}
+ .content {text-align: center;}
 </style>
-<div class="content" style="text-align:center">
-  <div class="content_show">
-    <div id="workorder" style="margin:0">Receipt</div>
-    <div id="header">
-      <div id="logo_show">
-        <% if @receipt.image_link? %>
-          <%= image_tag embed_remote_image(@receipt.image_link, 'image/png' ), :id => "image_show" %>
-        <% end %>
-      </div>
-      <table id="meta">
-        <tbody>
-          <tr>
-            <td class="meta-head">Date</td>
-            <td><div class="textline_top"><%= @receipt.date %></div></td>
-          </tr>
-          <tr>
-            <td class="meta-head">Order #</td>
-            <td><div class="textline_top"><%= @receipt.work_order_id %></div></td>
-          </tr>
-        </tbody>
-      </table>
+<div class="content_show">
+  <div id="workorder" style="margin:0">Receipt</div>
+  <div id="header">
+    <div id="logo_show">
+      <% if @receipt.image_link? %>
+        <%= image_tag embed_remote_image(@receipt.image_link, 'image/png' ), :id => "image_show" %>
+      <% end %>
     </div>
-    <div class="clear"></div>
-    <div id="line"></div>
-    <div id="address_wrap">
-      <div class="address">
-        <div class="label_show" id="label-left">FROM</div>
-        <div class="address_box"><%= @receipt.from_address %></div>
-      </div>
-      <div class="address">
-        <div class="label_show">TO</div>
-        <div class="address_box"><%= @receipt.to_address %></div>
-      </div>
-      <div class="address">
-        <div class="label_show">JOB</div>
-        <div class="address_box"><%= @receipt.job_description %></div>
-      </div>
-    </div>
-    <div class="clear"></div>
-    <table id="data">
-      <thead>
-        <tr>
-          <th id="qty">Qty</th>
-          <th id="description">Description</th>
-          <th id="price">Unit Price</th>
-          <th id="total">Line Total</th>
-        </tr>
-      </thead>
+    <table id="meta">
       <tbody>
-        <%= render @receipt.line_items %>
         <tr>
-          <td class="separator" colspan="4"></td>
-        <tr>
-        <tr class="even">
-          <td id="subtotal" colspan="3">Subtotal</td>
-          <td>
-            <div class="wrapperbottom">
-              <%= @receipt.subtotal %>
-            </div>
-          </td>
+          <td class="meta-head">Date</td>
+          <td><div class="textline_top"><%= @receipt.date %></div></td>
         </tr>
         <tr>
-          <td id="taxes" colspan="3">Sales Tax</td>
-          <td>
-            <div class="wrapperbottom">
-              <%= @receipt.taxes %>
-            </div>
-          </td>
-        </tr>
-        <tr class="even">
-          <td id="finaltotal" colspan="3">Total</td>
-          <td id="last_cell">
-            <div class="wrapperbottom">
-              <%= @receipt.total %>
-            </div>
-          </td>
+          <td class="meta-head">Order #</td>
+          <td><div class="textline_top"><%= @receipt.work_order_id %></div></td>
         </tr>
       </tbody>
     </table>
-    <div id="thankyou">Thank you for your business!</div>
-    <div class="left_buttons no-print">
-      <%= link_to 'Print', "javascript:print()", :class => "submit_button" %>
-      <%= link_to 'Download PDF', receipt_path(@receipt, :format => :pdf), :class => "submit_button" %>
+  </div>
+  <div class="clear"></div>
+  <div id="line"></div>
+  <div id="address_wrap">
+    <div class="address">
+      <div class="label_show" id="label-left">FROM</div>
+      <div class="address_box"><%= @receipt.from_address %></div>
+    </div>
+    <div class="address">
+      <div class="label_show">TO</div>
+      <div class="address_box"><%= @receipt.to_address %></div>
+    </div>
+    <div class="address">
+      <div class="label_show">JOB</div>
+      <div class="address_box"><%= @receipt.job_description %></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <table id="data">
+    <thead>
+      <tr>
+        <th id="qty">Qty</th>
+        <th id="description">Description</th>
+        <th id="price">Unit Price</th>
+        <th id="total">Line Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @receipt.line_items %>
+      <tr>
+        <td class="separator" colspan="4"></td>
+      <tr>
+      <tr class="even">
+        <td id="subtotal" colspan="3">Subtotal</td>
+        <td>
+          <div class="wrapperbottom">
+            <%= @receipt.subtotal %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td id="taxes" colspan="3">Sales Tax</td>
+        <td>
+          <div class="wrapperbottom">
+            <%= @receipt.taxes %>
+          </div>
+        </td>
+      </tr>
+      <tr class="even">
+        <td id="finaltotal" colspan="3">Total</td>
+        <td id="last_cell">
+          <div class="wrapperbottom">
+            <%= @receipt.total %>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="thankyou">Thank you for your business!</div>
+  <div class="left_buttons no-print">
+    <%= link_to 'Print', "javascript:print()", :class => "submit_button" %>
+    <%= link_to 'Download PDF', receipt_path(@receipt, :format => :pdf), :class => "submit_button" %>
 
-    </div>
-    <div class="receipt_actions no-print" data-no-turbolink>
-      <%= link_to 'Edit', edit_receipt_path(@receipt), :class => "submit_button" %>
-      <%= link_to 'Close', receipts_path, :class => "cancel_button" %>
-    </div>
+  </div>
+  <div class="receipt_actions no-print" data-no-turbolink>
+    <%= link_to 'Edit', edit_receipt_path(@receipt), :class => "submit_button" %>
+    <%= link_to 'Close', receipts_path, :class => "cancel_button" %>
   </div>
 </div>
