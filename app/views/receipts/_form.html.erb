@@ -36,9 +36,9 @@
     <div class="entry">
       <div class="label">DATE</div>
       <% if !@receipt.new_record? %>
-        <%= f.text_field :date, :value => @receipt.date.strftime("%d/%m/%Y") %>
+        <%= f.text_field :date, :value => @receipt.date.strftime("%Y-%m-%d"), :id => "datepicker" %>
       <% else %>
-        <%= f.text_field :date %>
+        <%= f.text_field :date, :id => "datepicker" %>
       <% end %>
     </div>
     <div class="entry">

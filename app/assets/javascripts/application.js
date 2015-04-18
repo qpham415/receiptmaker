@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery-ui/datepicker
 
 //function cycle(){
 //  $('.data-row:odd').addClass("even").removeClass("odd");
@@ -107,6 +108,12 @@ function hide_image () {
     $('#image_show').hide();
   }
 }
+function date_picker () {
+  $( "#datepicker" ).datepicker({
+    dateFormat: "yy-mm-dd"
+  });
+}
+
 
 $(document).ready(function(){
 //  $('#image').click(function(){
@@ -175,4 +182,6 @@ $(document).ready(function(){
 
   update_image();
   hide_image();
+
+  date_picker();
 });

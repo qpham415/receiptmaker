@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui/datepicker
  */
 
  body {
@@ -249,7 +250,7 @@
 }
 .textline_top {
   float: right;
-  padding: 2px;
+  padding: 2px 5px;
 }
 #address_wrap {
   margin-top: 30px;
