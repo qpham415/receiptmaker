@@ -5,7 +5,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => @user.provider) if is_navigational_format?
+      user_provider = @user.provider
+
+      case user_provider
+      when "google_oauth2"
+        set_flash_message(:notice, :success, :kind => "google") if is_navigational_format?
+      else
+        set_flash_message(:notice, :success, :kind => @user.provider) if is_navigational_format?
+      end
+
     else
       session["devise.user_attributes"] = @user.attributes
       redirect_to new_user_registration_url

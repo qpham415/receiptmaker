@@ -227,6 +227,7 @@
   font-size: 14px;
   display:inline-block;
   font-family: Lucida Grande, Arial;
+  font-weight: bold;
 }
 .cancel_button {
   padding: 10px 20px;
@@ -409,9 +410,16 @@
   width: 200px;
 }
 #error_explanation {
-  padding-left: 30px;
+  padding: 20px 30px;
   font-size: 14px;
   color: red;
+  text-align: left;
+}
+#error_explanation h2 {
+  font-size: 14px;
+}
+#error_explanation ul {
+  margin-left: 20px;
 }
 
 .menu {
