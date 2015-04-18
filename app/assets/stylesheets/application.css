@@ -480,6 +480,7 @@
   font-weight: bold;
   display: block;
   float: left;
+  text-transform: uppercase;
 }
 .field input {
   height: 30px;
@@ -487,6 +488,20 @@
   font-family: Lucida Grande, Arial;
   font-size: 14px;
   border: 1px solid rgba(132,132,132,0.6);
+}
+.remember {
+
+  float: left;
+  padding: 10px 20px;
+}
+.remember input {
+  height: 16px;
+  width: 16px;
+}
+.small_label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
 }
 .actions {
   float: left;
