@@ -427,6 +427,7 @@
 .menu {
   font-weight: bold;
   font-family: "Trebuchet MS", sans-serif;
+  background-color: rgba(66,139,202,0.9);
 }
 .sign_in {
   margin: 15px 70px 0 0;
@@ -434,13 +435,23 @@
 }
 .sign_in a {
   text-decoration: none;
-  color: #428bca;
+  color: #fff;
 }
 .menu_logo {
   font-size: 30px;
   float: left;
   margin: 5px 70px;
-  color: rgba(110,110,110,1);
+  color: #fff;
+}
+.alert, .notice {
+  padding: 10px;
+  background-color: rgba(110,110,110,0.1);
+  border: 1px solid rgba(110,110,110,0.5);
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+.alert:empty, .notice:empty {
+  display: none;
 }
 .header_text {
   color: #6E6E6E;
@@ -487,7 +498,7 @@
 .social_logo {
   width: 64px;
   height: 64px;
-  margin: 10px;
+  margin: 10px 20px 10px 0;
   float: left;
 }
 .social_logo a {

@@ -21,7 +21,10 @@
     <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
   <% end -%>
 
-  <h3>You can also sign up using the following providers</h3>
+  <h3>You can also sign
+    <% if controller_name != 'sessions' %>up <%end%>
+    <% if controller_name != 'registrations' %>in <%end%>
+    using the following providers</h3>
 
 <!--  <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
