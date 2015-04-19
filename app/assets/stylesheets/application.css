@@ -227,7 +227,7 @@
   font-size: 14px;
   display:inline-block;
   font-family: Lucida Grande, Arial;
-  font-weight: bold;
+  border-radius: 2px;
 }
 .cancel_button {
   padding: 10px 20px;
@@ -237,7 +237,8 @@
   font-size: 14px;
   display: inline-block;
   text-decoration: none;
-  font-family: Lucida Grande, Arial
+  font-family: Lucida Grande, Arial;
+  border-radius: 2px;
 }
 .delete_button {
   text-decoration: none;
@@ -248,6 +249,7 @@
   font-size: 14px;
   display:inline-block;
   font-family: Lucida Grande, Arial;
+  border-radius: 2px;
 }
 .textline_top {
   float: right;
@@ -423,7 +425,6 @@
 }
 
 .menu {
-  background-color: #fff;
   overflow: auto;
   height: 50px;
   position: fixed;
@@ -432,11 +433,8 @@
   -moz-box-shadow: 0px 0px 10px 1px rgb(100,100,100);
   box-shadow: 0px 0px 10px 1px rgb(100,100,100);
   z-index: 999;
-}
-.menu {
-  font-weight: bold;
-  font-family: "Trebuchet MS", sans-serif;
   background-color: rgba(66,139,202,0.9);
+  font-family: "Trebuchet MS", sans-serif;
 }
 .sign_in {
   margin: 15px 70px 0 0;
@@ -454,6 +452,7 @@
   text-decoration: none;
   color: #fff;
   font-size: 30px;
+  font-weight: bold;
 }
 .alert, .notice {
   padding: 10px;
