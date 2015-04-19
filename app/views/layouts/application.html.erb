@@ -8,7 +8,9 @@
 </head>
 <body>
   <div class="menu">
-    <div class="menu_logo">Receiptmaker</div>
+    <div class="menu_logo">
+      <%= link_to 'Receiptmaker', root_path %>
+    </div>
     <div class="no-print sign_in">
       <% if user_signed_in? %>
         Signed in as <%= current_user.email %> &nbsp<%= link_to 'Edit Profile', edit_user_registration_path %>
