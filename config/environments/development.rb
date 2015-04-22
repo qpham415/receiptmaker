@@ -60,11 +60,10 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => "receiptmaker",
-      :access_key_id => "AKIAJS2WUONN5OXW2FKA",
-      :secret_access_key => "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",
-    },
-    :region => "us-west-1"
+      :bucket => ENV['S3_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
   }
 
 end
