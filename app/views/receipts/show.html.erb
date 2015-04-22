@@ -16,7 +16,7 @@
   <div id="workorder" style="margin:0">Receipt</div>
   <div id="header">
     <div id="logo_show">
-      <img id="image_show" src=<%= @receipt.image_link %> alt="logo" onerror="hide_image(this);" />
+      <%= image_tag @receipt.logo.url(:original), :id => "image_show" %>
     </div>
     <table id="meta">
       <tbody>

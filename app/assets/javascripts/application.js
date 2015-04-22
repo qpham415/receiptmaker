@@ -180,8 +180,23 @@ $(document).ready(function(){
 
   $('#line_items tbody tr:last').hide();
 
-  update_image();
-  hide_image();
+//  update_image();
+//  hide_image();
 
   date_picker();
+
+  $('#imageloc').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.src = file.target.result;
+      $('#logo').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+
 });

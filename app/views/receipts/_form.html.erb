@@ -10,7 +10,9 @@
   <% end %>
   <div id="form_header">
     <div id="logo">
-      <img id="image" src='/images/logo.jpg' alt="logo" />
+      <% if @receipt.logo.exists? %>
+        <%= image_tag @receipt.logo.url(:original), :id => "image" %>
+      <% end %>
     </div>
     <div id="logoclick">
       <div class="logobutton"><a id="changelogo" href="javascript:;">Change Logo</a></div>
@@ -21,7 +23,7 @@
       <div class="logobutton"><a id="changecancel" href="javascript:;">Cancel</a></div>
       <div class="clear"></div>
       <div id="imageinput">
-        <%= f.text_field :image_link, :size => '50', :id => 'imageloc' %>
+        <%= f.file_field :logo, :size => '50', :id => 'imageloc' %>
       </div>
       <div class="clear"></div>
       <div id="imageinstr">Enter Logo URL</div>

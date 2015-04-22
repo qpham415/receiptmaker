@@ -43,6 +43,11 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-facebook'
 
+# Images upload with S3
+gem 'aws-sdk', '<2.0'
+gem 'paperclip'
+
+
 gem 'rails_12factor', group: :production
 
 group :production do
