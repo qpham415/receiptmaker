@@ -67,6 +67,10 @@
     </thead>
     <tbody>
       <%= render @receipt.line_items %>
+      <script type="text/javascript">
+        $('.show_row:odd').addClass("even").removeClass("odd");
+        $('.show_row:even').addClass("odd").removeClass("even");
+      </script>
       <tr>
         <td class="separator" colspan="4"></td>
       <tr>

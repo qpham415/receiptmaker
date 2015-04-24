@@ -20,7 +20,7 @@ class ReceiptsController < ApplicationController
 
   def new
     @receipt = current_user.receipts.build
-    2.times{ @receipt.line_items.build }
+    @line_item = @receipt.line_items.build
   end
 
   def create

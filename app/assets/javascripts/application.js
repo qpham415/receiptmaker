@@ -163,12 +163,25 @@ $(document).ready(function(){
 //  });
 
   $('.add_line').on('click','.add_line_item',function(){
-    id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
-    line = '<tr class="data-row">'+$('#line_items tbody tr:last').html()+'</tr>';
-    line = line.replace(/attributes_/g,'attributes_'+id);
-    line = line.replace(/attributes]\[/g,'attributes]['+id);
-    $('#line_items tbody tr:visible:last').after(line);
-    return false;
+    var visible_rows = $('#line_items tbody tr:visible').length;
+    if(visible_rows == 0) {
+      id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
+      line = '<tr class="data-row">'+$('#line_items tbody tr:last').html()+'</tr>';
+      line = line.replace(/attributes_/g,'attributes_'+id);
+      line = line.replace(/attributes]\[/g,'attributes]['+id);
+      $('#line_items tbody tr:last').after(line);
+      $('#line_items tbody tr:last').find('.destroy').val('false');
+      $('#line_items tbody tr:last').show();
+      return false;
+    } else {
+      id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
+      line = '<tr class="data-row">'+$('#line_items tbody tr:last').html()+'</tr>';
+      line = line.replace(/attributes_/g,'attributes_'+id);
+      line = line.replace(/attributes]\[/g,'attributes]['+id);
+      $('#line_items tbody tr:visible:last').after(line);
+      $('#line_items tbody tr:last').find('.destroy').val('false');
+      return false;
+    }
   });
 
   $('#line_items').on('click','.delete_line_item',function(){
@@ -177,8 +190,6 @@ $(document).ready(function(){
     $('.linetotal').trigger('change');
     return false;
   });
-
-  $('#line_items tbody tr:last').hide();
 
 //  update_image();
 //  hide_image();
