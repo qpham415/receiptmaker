@@ -122,7 +122,7 @@ $(document).ready(function(){
 //  });
   $('#deletelogo').click(function(){
     document.getElementById('image').src="/images/logo.jpg"
-    document.getElementById('imageloc').value='';
+    document.getElementById("receipt_remove_logo").checked = true;
   });
 //  $('#cancellogo').click(function(){
 //    $('#logoclick').hide();
