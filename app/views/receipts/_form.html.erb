@@ -16,20 +16,41 @@
         <img src="/images/logo.jpg">
       <% end %>
     </div>
-    <div id="logoclick">
-      <div class="logobutton"><a id="changelogo" href="javascript:;">Add A Logo</a></div>
-      <div class="logobutton"><a id="deletelogo" href="javascript:;">Remove Logo</a></div>
-      <div class="delete_logo_check"><%= f.check_box :remove_logo %></div>
+    <% if @receipt.logo.exists? %>
+      <%= image_tag @receipt.logo.url(:original), :id => "image_hidden" %>
+    <% else %>
+      <img src="/images/logo.jpg" id="image_hidden">
+    <% end %>
+    <% if @receipt.new_record? %>
+      <div id="new_logo_form" class="logo_form show_form" >
+    <% else %>
+      <div id="new_logo_form" class="logo_form" >
+    <% end %>
+        <div class="logobutton"><a class="change_logo" href="javascript:;">Add Logo</a></div>
     </div>
-    <div id="changeform">
-      <div class="logobutton"><a id="changesave" href="javascript:;">Save Logo</a></div>
-      <div class="logobutton"><a id="changecancel" href="javascript:;">Cancel</a></div>
+    <% if !@receipt.new_record? %>
+      <div id="edit_logo_form" class="logo_form show_form" >
+    <% else %>
+      <div id="edit_logo_form" class="logo_form" >
+    <% end %>
+        <div class="logobutton"><a class="change_logo" href="javascript:;">Change Logo</a></div>
+        <div class="logobutton"><a id="delete_logo" href="javascript:;">Remove Logo</a></div>
+        <div class="delete_logo_check"><%= f.check_box :remove_logo %></div>
+    </div>
+    <div id="change_form" class="logo_form">
+      <% if @receipt.new_record? %>
+        <div class="logobutton"><a id="change_cancel_new" href="javascript:;">Cancel</a></div>
+      <% else %>
+        <div class="logobutton"><a id="change_cancel" href="javascript:;">Cancel</a></div>
+      <% end %>
+      <div class="reset_logo_check">
+        <%= f.check_box :clear_logo %>
+      </div>
       <div class="clear"></div>
       <div id="imageinput">
         <%= f.file_field :logo, :size => '50', :id => 'imageloc' %>
       </div>
       <div class="clear"></div>
-      <div id="imageinstr">Enter Logo URL</div>
     </div>
   </div>
   <div class="clear"></div>
@@ -130,7 +151,7 @@
     </div>
   <% end %>
   <div class="receipt_actions">
-    <%= f.submit :class => "submit_button" %>
+    <%= f.submit :class => "submit_button", :id => "update_button"%>
     <% if !@receipt.new_record? %>
       <%= link_to 'Cancel', receipt_path(@receipt), :class=> "cancel_button" %>
     <% else %>

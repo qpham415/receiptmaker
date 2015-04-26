@@ -65,4 +65,8 @@ class ReceiptsController < ApplicationController
       params.permit(:quantity, :description, :unit_price, :line_total)
     end
 
+    def logo_params
+      params.permit!
+    end
+
 end

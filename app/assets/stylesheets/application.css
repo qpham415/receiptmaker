@@ -35,13 +35,11 @@
    margin-left: 40px;
  }
 
- #logoclick, #changeform {
+.logo_form {
    text-align: center;
    float: left;
    width: 45%;
    height: 100px;
- }
- #changeform {
    display: none;
  }
  .logobutton {
@@ -553,6 +551,10 @@
 .delete_account .linegrey {
   margin: 10px 0;
 }
+#image_hidden {
+  display: none;
+}
+
  .clear {
    clear: both;
  }

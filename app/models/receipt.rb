@@ -1,10 +1,10 @@
 class Receipt < ActiveRecord::Base
   belongs_to :user
   has_many :line_items
+  accepts_nested_attributes_for :line_items, :allow_destroy => :true, reject_if: lambda {|attributes| attributes['qty'].blank?}
+
   validates_presence_of :date, :from_address, :to_address
   validate :date_is_date?
-
-  accepts_nested_attributes_for :line_items, :allow_destroy => :true, reject_if: lambda {|attributes| attributes['qty'].blank?}
 
   has_attached_file :logo, styles: {
     thumb: '100x100>'

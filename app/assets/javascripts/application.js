@@ -113,36 +113,39 @@ function date_picker () {
     dateFormat: "yy-mm-dd"
   });
 }
+function clear_upload () {
+  var original_image = document.getElementById('image_hidden').src;
+  $('#logo img').attr('src', original_image);
+  $("#imageloc").replaceWith($("#imageloc").clone(true));
+}
 
 
 $(document).ready(function(){
-//  $('#image').click(function(){
-//    $(this).hide();
-//    $('#logoclick').show();
-//  });
-  $('#deletelogo').click(function(){
+
+  //Display image update option depending on new or edit
+  $('.show_form').show();
+  $('#delete_logo').click(function(){
     document.getElementById('image').src="/images/logo.jpg"
     document.getElementById("receipt_remove_logo").checked = true;
   });
-//  $('#cancellogo').click(function(){
-//    $('#logoclick').hide();
-//    $('#image').show();
-//  });
-  $('#changelogo').click(function(){
-    $('#logoclick').hide();
-    $('#changeform').show();
+  $('.change_logo').click(function(){
+    $('#new_logo_form').hide();
+    $('#edit_logo_form').hide();
+    $('#change_form').show();
+    document.getElementById("receipt_remove_logo").checked = false;
   });
-  $('#changecancel').click(function(){
-    $('#changeform').hide();
-    $('#logoclick').show();
+  $('#change_cancel').click(function(){
+    $('#change_form').hide();
+    $('#edit_logo_form').show();
+    clear_upload();
   })
-  $("#changesave").click(function(){
-    $("#image").attr('src',$("#imageloc").val());
-    $('#changeform').hide();
-    $('#logoclick').show();
-    update_image();
-    $('#image').show();
-  });
+  $('#change_cancel_new').click(function(){
+    $('#change_form').hide();
+    $('#new_logo_form').show();
+    clear_upload();
+  })
+
+  //Update the subtotal and total values on change in line items
   $('#line_items').on('change','.qty-value',function(e){
     update_line(this);
   });
@@ -162,28 +165,18 @@ $(document).ready(function(){
 //    this.size = this.value.length + this.value.length/8;
 //  });
 
+  //Add an extra line item by cloning
   $('.add_line').on('click','.add_line_item',function(){
-    var visible_rows = $('#line_items tbody tr:visible').length;
-    if(visible_rows == 0) {
-      id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
-      line = '<tr class="data-row">'+$('#line_items tbody tr:last').html()+'</tr>';
-      line = line.replace(/attributes_/g,'attributes_'+id);
-      line = line.replace(/attributes]\[/g,'attributes]['+id);
-      $('#line_items tbody tr:last').after(line);
-      $('#line_items tbody tr:last').find('.destroy').val('false');
-      $('#line_items tbody tr:last').show();
-      return false;
-    } else {
-      id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
-      line = '<tr class="data-row">'+$('#line_items tbody tr:last').html()+'</tr>';
-      line = line.replace(/attributes_/g,'attributes_'+id);
-      line = line.replace(/attributes]\[/g,'attributes]['+id);
-      $('#line_items tbody tr:visible:last').after(line);
-      $('#line_items tbody tr:last').find('.destroy').val('false');
-      return false;
-    }
+    id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
+    line = '<tr class="data-row">'+$('#line_items tbody tr:last').html()+'</tr>';
+    line = line.replace(/attributes_/g,'attributes_'+id);
+    line = line.replace(/attributes]\[/g,'attributes]['+id);
+    $('#line_items tbody tr:last').after(line);
+    $('#line_items tbody tr:last').find('.destroy').val('false');
+    return false;
   });
 
+  //Delete line item, trigger update on line totals
   $('#line_items').on('click','.delete_line_item',function(){
     if ($('.delete_line_item').length <= 1) return false;
     $(this).parents('tr').find('.destroy').val('true').end().hide();
@@ -191,11 +184,9 @@ $(document).ready(function(){
     return false;
   });
 
-//  update_image();
-//  hide_image();
-
   date_picker();
 
+  //Display image preview after upload
   $('#imageloc').on('change', function(event) {
     var files = event.target.files;
     var image = files[0]
