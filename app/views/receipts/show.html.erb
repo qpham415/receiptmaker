@@ -16,7 +16,9 @@
   <div id="workorder" style="margin:0">Receipt</div>
   <div id="header">
     <div id="logo_show">
-      <%= image_tag @receipt.logo.url(:original), :id => "image_show" %>
+      <% if @receipt.logo.exists? %>
+        <%= image_tag @receipt.logo.url(:original), :id => "image_show" %>
+      <% end %>
     </div>
     <table id="meta">
       <tbody>

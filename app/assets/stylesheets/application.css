@@ -43,26 +43,16 @@
    display: none;
  }
  .logobutton {
-   float: left;
    padding: 5px;
  }
- .logobutton a {
-   text-decoration: none;
-   padding: 10px 20px;
-   border: 0;
-   background-color: rgba(130,130,130,0.6);
-   color: #000;
-   font-size: 14px;
-   display:inline-block;
-   font-family: Lucida Grande, Arial;
-   border-radius: 3px;
-   border: 1px solid rgba(110,110,110,1);
+ .edit_wrap {
+   display: inline-block;
+ }
+ .edit_wrap .logobutton {
+   float: left;
  }
  #imageinput {
-   margin: 8px 0 0 3px;
- }
- #imageloc {
-   height: 30px;
+   padding: 20px 0 0 20px;
  }
  #imageinstr {
    margin: 10px 0 0 3px;
@@ -552,6 +542,9 @@
   margin: 10px 0;
 }
 #image_hidden {
+  display: none;
+}
+.delete_logo_check {
   display: none;
 }
 

@@ -10,8 +10,8 @@
   <div id="workorder" style="margin:0">Receipt</div>
   <div id="header">
     <div id="logo_show">
-      <% if @receipt.image_link? %>
-        <%= image_tag embed_remote_image(@receipt.image_link, 'image/png' ), :id => "image_show" %>
+      <% if @receipt.logo.exists? %>
+        <%= image_tag embed_remote_image(@receipt.logo.url(:original), 'image/png' ), :id => "image_show" %>
       <% end %>
     </div>
     <table id="meta">
