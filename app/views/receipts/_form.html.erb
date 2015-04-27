@@ -12,39 +12,25 @@
     <div id="logo">
       <% if @receipt.logo.exists? %>
         <%= image_tag @receipt.logo.url(:original), :id => "image" %>
+      <% elsif current_user.default_logo.exists? %>
+        <%= image_tag current_user.default_logo.url(:original), :id => "image" %>
       <% else %>
-        <img src="/images/logo.jpg">
+        <img src="/images/logo.jpg" id="image" >
       <% end %>
     </div>
-    <% if @receipt.logo.exists? %>
-      <%= image_tag @receipt.logo.url(:original), :id => "image_hidden" %>
-    <% else %>
-      <img src="/images/logo.jpg" id="image_hidden">
-    <% end %>
-    <% if @receipt.new_record? %>
-      <div id="new_logo_form" class="logo_form show_form" >
-    <% else %>
-      <div id="new_logo_form" class="logo_form" >
-    <% end %>
-        <div class="logobutton"><a class="change_logo submit_button" href="javascript:;">Add Logo</a></div>
-    </div>
-    <% if !@receipt.new_record? %>
-      <div id="edit_logo_form" class="logo_form show_form" >
-    <% else %>
-      <div id="edit_logo_form" class="logo_form" >
-    <% end %>
+    <div id="edit_form" class="logo_form" >
         <div class="edit_wrap">
-          <div class="logobutton"><a class="change_logo submit_button" href="javascript:;">Change Logo</a></div>
+          <% if @receipt.new_record? %>
+            <div class="logobutton"><a id="change_logo" class="submit_button" href="javascript:;">Add Logo</a></div>
+          <% else %>
+          <div class="logobutton"><a id="change_logo" class="submit_button" href="javascript:;">Change Logo</a></div>
+          <% end %>
           <div class="logobutton"><a id="delete_logo" class="delete_button" href="javascript:;">Remove Logo</a></div>
           <div class="delete_logo_check"><%= f.check_box :remove_logo %></div>
         </div>
     </div>
     <div id="change_form" class="logo_form">
-      <% if @receipt.new_record? %>
-        <div class="logobutton"><a id="change_cancel_new" class="cancel_button" href="javascript:;">Cancel</a></div>
-      <% else %>
-        <div class="logobutton"><a id="change_cancel" class="cancel_button" href="javascript:;">Cancel</a></div>
-      <% end %>
+      <div class="logobutton"><a id="change_cancel" class="cancel_button" href="javascript:;">Cancel</a></div>
       <div class="clear"></div>
       <div id="imageinput">
         <%= f.file_field :logo, :id => 'imageloc' %>

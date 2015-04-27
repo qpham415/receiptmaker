@@ -6,10 +6,11 @@ class Receipt < ActiveRecord::Base
   validates_presence_of :date, :from_address, :to_address
   validate :date_is_date?
 
-  has_attached_file :logo, styles: {
-    thumb: '100x100>'
-  }
-
+  has_attached_file :logo,
+    styles: {
+      thumb: '100x100>'
+    }
+    
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
   attr_accessor :remove_logo

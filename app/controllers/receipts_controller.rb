@@ -25,6 +25,9 @@ class ReceiptsController < ApplicationController
 
   def create
     @receipt = current_user.receipts.build(receipt_params)
+    if @receipt.logo.blank?
+      @receipt.logo = current_user.default_logo
+    end
     @receipt.save
 
     if @receipt.save
@@ -43,6 +46,9 @@ class ReceiptsController < ApplicationController
 
   def update
     @receipt = current_user.receipts.find(params[:id])
+    @receipt.logo = current_user.default_logo
+
+
     if @receipt.update(receipt_params)
       redirect_to @receipt
     else

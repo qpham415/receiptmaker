@@ -114,7 +114,7 @@ function date_picker () {
   });
 }
 function clear_upload () {
-  var original_image = document.getElementById('image_hidden').src;
+  var original_image = $('.hidden img').attr('src');
   $('#logo img').attr('src', original_image);
   $("#imageloc").replaceWith($("#imageloc").clone(true));
 }
@@ -123,27 +123,22 @@ function clear_upload () {
 $(document).ready(function(){
 
   //Display image update option depending on new or edit
-  $('.show_form').show();
   $('#delete_logo').click(function(){
     document.getElementById('image').src="/images/logo.jpg"
+    $('.hidden img').attr('src','/images/logo.jpg')
     document.getElementById("receipt_remove_logo").checked = true;
   });
-  $('.change_logo').click(function(){
-    $('#new_logo_form').hide();
-    $('#edit_logo_form').hide();
+  $('#change_logo').click(function(){
+    $('#edit_form').hide();
     $('#change_form').show();
     document.getElementById("receipt_remove_logo").checked = false;
   });
   $('#change_cancel').click(function(){
     $('#change_form').hide();
-    $('#edit_logo_form').show();
+    $('#edit_form').show();
     clear_upload();
-  })
-  $('#change_cancel_new').click(function(){
-    $('#change_form').hide();
-    $('#new_logo_form').show();
-    clear_upload();
-  })
+  });
+  $('#logo').clone().insertAfter('div#logo').addClass('hidden');
 
   //Update the subtotal and total values on change in line items
   $('#line_items').on('change','.qty-value',function(e){

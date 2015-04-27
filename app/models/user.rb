@@ -1,5 +1,11 @@
 class User < ActiveRecord::Base
   has_many :receipts
+  has_attached_file :default_logo, styles: {
+    thumb: '100x100>'
+  }
+
+  validates_attachment_content_type :default_logo, :content_type => /\Aimage\/.*\Z/
+
   # Include default devise modules. Others available are:
   # :lockable, :confirmable
   devise :database_authenticatable, :registerable,

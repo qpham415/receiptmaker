@@ -40,6 +40,8 @@
    float: left;
    width: 45%;
    height: 100px;
+ }
+ #change_form {
    display: none;
  }
  .logobutton {
@@ -545,6 +547,9 @@
   display: none;
 }
 .delete_logo_check {
+  display: none;
+}
+.hidden {
   display: none;
 }
 
