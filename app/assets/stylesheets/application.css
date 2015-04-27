@@ -543,13 +543,7 @@
 .delete_account .linegrey {
   margin: 10px 0;
 }
-#image_hidden {
-  display: none;
-}
-.delete_logo_check {
-  display: none;
-}
-.hidden {
+#image_hidden, .hidden, .hidden_check {
   display: none;
 }
 

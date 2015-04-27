@@ -124,18 +124,24 @@ $(document).ready(function(){
 
   //Display image update option depending on new or edit
   $('#delete_logo').click(function(){
-    document.getElementById('image').src="/images/logo.jpg"
-    $('.hidden img').attr('src','/images/logo.jpg')
-    document.getElementById("receipt_remove_logo").checked = true;
+    var r = confirm("Receipt logo will be deleted.");
+    if (r == true) {
+      document.getElementById('image').src="/images/logo.jpg"
+      $('.hidden img').attr('src','/images/logo.jpg')
+      document.getElementById("receipt_remove_logo").checked = true;
+    } else {
+    return false;
+    }
   });
   $('#change_logo').click(function(){
     $('#edit_form').hide();
     $('#change_form').show();
-    document.getElementById("receipt_remove_logo").checked = false;
+    document.getElementById("receipt_new_logo").checked = true;
   });
   $('#change_cancel').click(function(){
     $('#change_form').hide();
     $('#edit_form').show();
+    document.getElementById("receipt_new_logo").checked = false;
     clear_upload();
   });
   $('#logo').clone().insertAfter('div#logo').addClass('hidden');

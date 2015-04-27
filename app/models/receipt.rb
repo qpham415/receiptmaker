@@ -10,11 +10,11 @@ class Receipt < ActiveRecord::Base
     styles: {
       thumb: '100x100>'
     }
-    
+
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
-  attr_accessor :remove_logo
-  before_save :delete_logo, if: ->{ remove_logo == '1' && !logo_updated_at_changed? }
+  attr_accessor :remove_logo, :new_logo
+  before_save :delete_logo, if: ->{ (remove_logo == '1' && new_logo == '0') || (remove_logo == '1' && new_logo == '1' && !logo_updated_at_changed?) }
 
   private
     def date_is_date?

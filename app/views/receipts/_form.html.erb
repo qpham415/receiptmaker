@@ -10,24 +10,29 @@
   <% end %>
   <div id="form_header">
     <div id="logo">
-      <% if @receipt.logo.exists? %>
-        <%= image_tag @receipt.logo.url(:original), :id => "image" %>
-      <% elsif current_user.default_logo.exists? %>
-        <%= image_tag current_user.default_logo.url(:original), :id => "image" %>
+      <% if @receipt.new_record? %>
+        <% if current_user.default_logo.exists? %>
+          <%= image_tag current_user.default_logo.url(:original), :id => "image" %>
+        <% else %>
+          <img src="/images/logo.jpg" id="image" >
+        <% end %>
       <% else %>
-        <img src="/images/logo.jpg" id="image" >
+        <% if @receipt.logo.exists? %>
+          <%= image_tag @receipt.logo.url(:original), :id => "image" %>
+        <% else %>
+          <img src="/images/logo.jpg" id="image" >
+        <% end %>
       <% end %>
     </div>
     <div id="edit_form" class="logo_form" >
-        <div class="edit_wrap">
-          <% if @receipt.new_record? %>
-            <div class="logobutton"><a id="change_logo" class="submit_button" href="javascript:;">Add Logo</a></div>
-          <% else %>
-          <div class="logobutton"><a id="change_logo" class="submit_button" href="javascript:;">Change Logo</a></div>
-          <% end %>
-          <div class="logobutton"><a id="delete_logo" class="delete_button" href="javascript:;">Remove Logo</a></div>
-          <div class="delete_logo_check"><%= f.check_box :remove_logo %></div>
-        </div>
+      <div class="edit_wrap">
+        <% if @receipt.new_record? %>
+          <div class="logobutton"><a id="change_logo" class="submit_button" href="javascript:;">Add Logo</a></div>
+        <% else %>
+        <div class="logobutton"><a id="change_logo" class="submit_button" href="javascript:;">Change Logo</a></div>
+        <% end %>
+        <div class="logobutton"><a id="delete_logo" class="delete_button" href="javascript:;">Remove Logo</a></div>
+      </div>
     </div>
     <div id="change_form" class="logo_form">
       <div class="logobutton"><a id="change_cancel" class="cancel_button" href="javascript:;">Cancel</a></div>
@@ -37,6 +42,8 @@
       </div>
       <div class="clear"></div>
     </div>
+    <div class="delete_logo_check hidden_check"><%= f.check_box :remove_logo %></div>
+    <div class="new_logo_check hidden_check"><%= f.check_box :new_logo %></div>
   </div>
   <div class="clear"></div>
   <div class="form_middle">
