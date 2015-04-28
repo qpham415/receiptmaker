@@ -9,7 +9,7 @@
     </div>
   <% end %>
   <div id="form_header">
-    <div id="logo">
+    <div id="logo" class="logo_display">
       <% if @receipt.new_record? %>
         <% if current_user.default_logo.exists? %>
           <%= image_tag current_user.default_logo.url(:original), :id => "image" %>

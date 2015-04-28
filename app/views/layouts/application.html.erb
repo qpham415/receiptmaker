@@ -11,7 +11,7 @@
     <div class="menu_logo">
       <%= link_to 'Receiptmaker', root_path %>
     </div>
-    <div class="no-print sign_in">
+    <div class="no-print sign_in" data-no-turbolink>
       <% if user_signed_in? %>
         Signed in as <%= current_user.email %> &nbsp<%= link_to 'Edit Profile', edit_user_registration_path %>
         | Not you? <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>

@@ -43,4 +43,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  attr_accessor :remove_logo, :new_logo
+  before_validation { self.default_logo.clear if (remove_logo == '1' && new_logo == '0') || (remove_logo == '1' && new_logo == '1' && !default_logo_updated_at_changed?) }
+
 end

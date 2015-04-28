@@ -16,10 +16,7 @@
 //= require_tree .
 //= require jquery-ui/datepicker
 
-//function cycle(){
-//  $('.data-row:odd').addClass("even").removeClass("odd");
-//  $('.data-row:even').addClass("odd").removeClass("even");
-//}
+
 // from http://www.mediacollege.com/internet/javascript/number/round.html
 function roundNumber(number,decimals) {
   var newString;// The new rounded number
@@ -118,6 +115,20 @@ function clear_upload () {
   $('#logo img').attr('src', original_image);
   $("#imageloc").replaceWith($("#imageloc").clone(true));
 }
+function image_preview (preview) {
+  var files = event.target.files;
+  var image = files[0]
+  var reader = new FileReader();
+  reader.onload = function(file) {
+    var img = new Image();
+    console.log(file);
+    img.src = file.target.result;
+    $(preview).html(img);
+  }
+  reader.readAsDataURL(image);
+  console.log(files);
+}
+
 
 
 $(document).ready(function(){
@@ -126,9 +137,15 @@ $(document).ready(function(){
   $('#delete_logo').click(function(){
     var r = confirm("Receipt logo will be deleted.");
     if (r == true) {
-      document.getElementById('image').src="/images/logo.jpg"
-      $('.hidden img').attr('src','/images/logo.jpg')
-      document.getElementById("receipt_remove_logo").checked = true;
+      document.getElementById('image').src="/images/logo.jpg";
+      $('.hidden img').attr('src','/images/logo.jpg');
+
+      if ($('#receipt_remove_logo').length > 0) {
+        document.getElementById("receipt_remove_logo").checked = true;
+      } else {
+        document.getElementById("user_remove_logo").checked = true;
+      }
+
     } else {
     return false;
     }
@@ -136,12 +153,20 @@ $(document).ready(function(){
   $('#change_logo').click(function(){
     $('#edit_form').hide();
     $('#change_form').show();
-    document.getElementById("receipt_new_logo").checked = true;
+    if ($('#receipt_new_logo').length > 0) {
+      document.getElementById("receipt_new_logo").checked = true;
+    } else {
+      document.getElementById("user_new_logo").checked = true;
+    }
   });
   $('#change_cancel').click(function(){
     $('#change_form').hide();
     $('#edit_form').show();
-    document.getElementById("receipt_new_logo").checked = false;
+    if ($('#receipt_new_logo').length > 0) {
+      document.getElementById("receipt_new_logo").checked = false;
+    } else {
+      document.getElementById("user_new_logo").checked = false;
+    }
     clear_upload();
   });
   $('#logo').clone().insertAfter('div#logo').addClass('hidden');
@@ -187,19 +212,14 @@ $(document).ready(function(){
 
   date_picker();
 
-  //Display image preview after upload
-  $('#imageloc').on('change', function(event) {
-    var files = event.target.files;
-    var image = files[0]
-    var reader = new FileReader();
-    reader.onload = function(file) {
-      var img = new Image();
-      console.log(file);
-      img.src = file.target.result;
-      $('#logo').html(img);
-    }
-    reader.readAsDataURL(image);
-    console.log(files);
+  //Form display image preview after upload
+  $('#imageloc').on('change',function(){
+    image_preview('#logo');
+  });
+
+  //User profile display image after upload
+  $('#user_default_logo').on('change',function(){
+    image_preview('#logo');
   });
 
 });

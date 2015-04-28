@@ -1,8 +1,9 @@
 <h2 class="header_text" >Edit Your Account</h2>
 <div class="linegrey"></div>
 
-<div class="sign_in_wrap">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+  <div class="sign_in_wrap">
     <%= devise_error_messages! %>
 
     <div class="field">
@@ -25,28 +26,57 @@
     </div>
     <% if f.object.encrypted_password.present? %>
       <div class="field">
-        <%= f.label :current_password %><br />
+        <%= f.label :current_password %>&nbsp<i>(needed for any change)</i><br />
         <%= f.password_field :current_password, autocomplete: "off" %>
       </div>
     <% end %>
-
-    <div class="field">
-      <%= f.file_field :default_logo %>
-    </div>
 
     <div class="actions">
       <%= f.submit "Update", :class => "submit_button" %>
       <%= link_to "Cancel", root_path, :class => "cancel_button" %>
     </div>
-  <% end %>
-  <div class="clear"></div>
 
-  <div class="delete_account">
-    <h4>Delete Your Account <i>(irreversible)</i></h4>
-    <div class="linegrey"></div>
-    <%= link_to "Delete My Account", registration_path(resource_name), data: {
-      confirm: "Are you sure you want to permanently delete your account?"
-    }, method: :delete, :class => "delete_button" %>
+    <div class="clear"></div>
+
+    <div class="delete_account">
+      <h4>Delete Your Account <i>(irreversible)</i></h4>
+      <div class="linegrey"></div>
+      <%= link_to "Delete My Account", registration_path(resource_name), data: {
+        confirm: "Are you sure you want to permanently delete your account?"
+      }, method: :delete, :class => "delete_button" %>
+    </div>
+
   </div>
 
-</div>
+  <div class="default_wrap">
+    <h4>Choose your default logo</h4>
+    <div class="linegrey"></div>
+    <div id="logo" style="margin:30px 0 20px 0;">
+      <% if current_user.default_logo.exists? %>
+        <%= image_tag current_user.default_logo.url(:original), :id => "image" %>
+      <% else %>
+        <img src="/images/logo.jpg" id="image" >
+      <% end %>
+    </div>
+    <div class="clear"></div>
+    <div id="edit_form" class="user_logo_form" >
+      <div class="edit_wrap">
+        <% if !current_user.default_logo.exists? %>
+          <div class="logobutton"><a id="change_logo" class="submit_button" href="javascript:;">Add Logo</a></div>
+        <% else %>
+        <div class="logobutton"><a id="change_logo" class="submit_button" href="javascript:;">Change Logo</a></div>
+        <% end %>
+        <div class="logobutton"><a id="delete_logo" class="delete_button" href="javascript:;">Remove Logo</a></div>
+      </div>
+    </div>
+    <div id="change_form" class="user_logo_form">
+      <div class="logobutton"><a id="change_cancel" class="cancel_button" href="javascript:;">Cancel</a></div>
+      <div class="clear"></div>
+      <div id="imageinput">
+        <%= f.file_field :default_logo, :id => 'imageloc' %>
+      </div>
+    </div>
+    <div class="delete_logo_check hidden_check"><%= f.check_box :remove_logo %></div>
+    <div class="new_logo_check hidden_check"><%= f.check_box :new_logo %></div>
+  </div>
+<% end %>
