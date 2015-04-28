@@ -64,15 +64,11 @@ class ReceiptsController < ApplicationController
 
   private
     def receipt_params
-      params.require(:receipt).permit!
+      params.require(:receipt).permit(:date, :work_order_id, :from_address, :to_address, :job_description, :subtotal, :taxes, :total, :user_id, :logo, :remove_logo, :new_logo)
     end
 
     def line_item_params
       params.permit(:quantity, :description, :unit_price, :line_total)
-    end
-
-    def logo_params
-      params.permit!
     end
 
 end
