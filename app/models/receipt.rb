@@ -14,17 +14,14 @@ class Receipt < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
   attr_accessor :remove_logo, :new_logo
-  before_save :delete_logo, if: ->{ (remove_logo == '1' && new_logo == '0') || (remove_logo == '1' && new_logo == '1' && !logo_updated_at_changed?) }
+  before_save { self.logo.clear if (remove_logo == '1' && new_logo == '0') || (remove_logo == '1' && new_logo == '1' && logo.blank?) }
+
 
   private
     def date_is_date?
       if !date.is_a?(Date)
         errors.add(:date, 'must be a valid date')
       end
-    end
-
-    def delete_logo
-      self.logo = nil
     end
 
 end
