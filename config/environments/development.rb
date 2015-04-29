@@ -50,8 +50,8 @@ Rails.application.configure do
         :address => "smtp.gmail.com",
         :port => 587,
         :domain => 'receiptmaker.heorokuapp.com:80',
-        :user_name => "88pancakefactory@gmail.com",
-        :password => "parkpickle",
+        :user_name => ENV['EMAIL'],
+        :password => ENV['EMAIL_PASSWORD'],
         :authentication => :plain,
         :enable_starttls_auto => true
   }
