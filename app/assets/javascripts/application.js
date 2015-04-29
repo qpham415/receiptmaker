@@ -115,18 +115,16 @@ function clear_upload () {
   $('#logo img').attr('src', original_image);
   $("#imageloc").replaceWith($("#imageloc").clone(true));
 }
-function image_preview (preview) {
-  var files = event.target.files;
-  var image = files[0]
-  var reader = new FileReader();
-  reader.onload = function(file) {
-    var img = new Image();
-    console.log(file);
-    img.src = file.target.result;
-    $(preview).html(img);
-  }
-  reader.readAsDataURL(image);
-  console.log(files);
+function image_preview (input) {
+  if (input.files && input.files[0]) {
+       var reader = new FileReader();
+
+       reader.onload = function (e) {
+           $('#image').attr('src', e.target.result);
+       }
+
+       reader.readAsDataURL(input.files[0]);
+   }
 }
 
 
@@ -214,12 +212,7 @@ $(document).ready(function(){
 
   //Form display image preview after upload
   $('#imageloc').on('change',function(){
-    image_preview('#logo');
-  });
-
-  //User profile display image after upload
-  $('#user_default_logo').on('change',function(){
-    image_preview('#logo');
+    image_preview(this);
   });
 
 });

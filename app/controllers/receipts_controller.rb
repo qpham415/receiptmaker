@@ -67,4 +67,8 @@ class ReceiptsController < ApplicationController
       params.require(:receipt).permit(:date, :work_order_id, :from_address, :to_address, :job_description, :subtotal, :taxes, :total, :user_id, :logo, :remove_logo, :new_logo, line_items_attributes: [:qty, :description, :unit_price, :line_total, :id, :receipt_id, :_destroy])
     end
 
+    def line_item_params
+      params.permit(:qty, :description, :unit_price, :line_total, :id, :receipt_id, :_destroy)
+    end
+
 end
