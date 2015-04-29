@@ -1,8 +1,10 @@
-<h2 class="header_text">Listings of All Receipts</h2>
-<div class="linegrey"></div>
 <div id="index_logo">
   <%= image_tag current_user.default_logo.url(:original), :id => "image" %>
 </div>
+<div class="clear"></div>
+<h2 class="header_text">Listings of All Receipts</h2>
+<div class="linegrey"></div>
+<div class="clear"></div>
 <div class="new_button" data-no-turbolink>
   <%= link_to 'New Receipt', new_receipt_path, :class => "submit_button" %>
 </div>

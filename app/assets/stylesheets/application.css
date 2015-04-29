@@ -298,23 +298,19 @@
   display: inline-block;
   margin-top: 50px;
 }
+#index_logo {
+  float: right;
+  padding: 30px 100px 0 0;
+}
+
 .thead {
   background-color: #BDBDBD;
 }
 .new_receipt {
   padding-top: 30px;
 }
-#new_button {
-  text-decoration: none;
-  padding: 10px 20px;
-  border: 0;
-  background-color: rgba(132,132,132,0.3);
-  color: #428bca;
-  font-size: 14px;
-  display:inline-block;
-  font-family: Lucida Grande, Arial;
-  border-radius: 3px;
-  border: 1px solid rgba(132,132,132,1);
+.new_button {
+  margin-top: 15px;
 }
 .entry {
   float: left;
