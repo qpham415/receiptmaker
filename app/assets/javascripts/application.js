@@ -128,7 +128,6 @@ function image_preview (input) {
 }
 
 
-
 $(document).ready(function(){
 
   //Display image update option depending on new or edit

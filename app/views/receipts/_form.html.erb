@@ -42,8 +42,8 @@
       </div>
       <div class="clear"></div>
     </div>
-    <div class="delete_logo_check"><%= f.check_box :remove_logo %></div>
-    <div class="new_logo_check"><%= f.check_box :new_logo %></div>
+    <div class="delete_logo_check hidden_check"><%= f.check_box :remove_logo %></div>
+    <div class="new_logo_check hidden_check"><%= f.check_box :new_logo %></div>
   </div>
   <div class="clear"></div>
   <div class="form_middle">
@@ -63,7 +63,11 @@
     <div id="address">
       <div class="entry">
         <div class="label">FROM</div>
-        <%= f.text_area :from_address, :class => 'companyinfo', :rows => '6', :cols => '40' %>
+        <% if @receipt.new_record? %>
+          <%= f.text_area :from_address, :class => 'companyinfo', :rows => '6', :cols => '40', :value => current_user.default_address %>
+        <% else %>
+          <%= f.text_area :from_address, :class => 'companyinfo', :rows => '6', :cols => '40' %>
+        <% end %>
       </div>
       <div class="entry">
         <div class="label">TO</div>

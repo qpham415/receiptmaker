@@ -1,6 +1,8 @@
-<div id="index_logo">
-  <%= image_tag current_user.default_logo.url(:original), :id => "image" %>
-</div>
+<% if current_user.default_logo.exists? %>
+  <div id="index_logo">
+    <%= image_tag current_user.default_logo.url(:original), :id => "image" %>
+  </div>
+<% end %>
 <div class="clear"></div>
 <h2 class="header_text">Listings of All Receipts</h2>
 <div class="linegrey"></div>
