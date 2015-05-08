@@ -190,11 +190,9 @@ $(document).ready(function(){
 
   //Add an extra line item by cloning
   $('.add_line').on('click','.add_line_item',function(){
-    id = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
     line = '<tr class="data-row">'+$('#line_items tbody tr:last').html()+'</tr>';
-    line = line.replace(/attributes_/g,'attributes_'+id);
-    line = line.replace(/attributes]\[/g,'attributes]['+id);
     $('#line_items tbody tr:last').after(line);
+    $('#line_items tbody tr:last input').val('');
     $('#line_items tbody tr:last').find('.destroy').val('false');
     return false;
   });

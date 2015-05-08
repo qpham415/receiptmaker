@@ -1,7 +1,11 @@
 class Receipt < ActiveRecord::Base
   belongs_to :user
   has_many :line_items
-  accepts_nested_attributes_for :line_items, :allow_destroy => :true, reject_if: lambda {|attributes| attributes['qty'].blank?}
+  accepts_nested_attributes_for :line_items, :allow_destroy => :true, :reject_if => :reject_line_items
+
+  def reject_line_items(attributed)
+    attributed['unit_price'].blank? and attributed['qty'].blank?
+  end
 
   validates_presence_of :date, :from_address, :to_address
   validate :date_is_date?
