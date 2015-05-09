@@ -1,4 +1,3 @@
-# spec/models/receipt.rb
 require 'spec_helper'
 require 'rails_helper'
 
